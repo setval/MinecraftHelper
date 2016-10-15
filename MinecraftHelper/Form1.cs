@@ -7,6 +7,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using MinecraftHelper.Forms;
+using System.Net;
+using System.IO;
 
 namespace MinecraftHelper
 {
@@ -17,11 +20,25 @@ namespace MinecraftHelper
             InitializeComponent();
         }
         private Settings settings = new Settings();
-        private WebBrowser webNews = null;
+        private TextBox webNews = null;
+        private TellrawForm tellrawMain;
 
         private void MainForm_Load(object sender, EventArgs e)
         {
             InternetConnection();
+            if (returnBoolInternetConnection() || true)
+            {
+                HttpWebRequest req;
+                HttpWebResponse resp;
+                StreamReader sr;
+                string content;
+                req = (HttpWebRequest)WebRequest.Create("https://raw.githubusercontent.com/DiscoreMe/MinecraftHelper/master/REST/news");
+                resp = (HttpWebResponse)req.GetResponse();
+                sr = new StreamReader(resp.GetResponseStream(), Encoding.GetEncoding("UTF-8"));
+                content = sr.ReadToEnd();
+                sr.Close();
+                blockNews.Text = content;
+            }
         }
 
         private bool returnBoolInternetConnection()
@@ -71,7 +88,32 @@ namespace MinecraftHelper
 
         private void programInfo_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Minecraft Helper\n\t\tby Discore\n\nVK: vk.com/id109841256");
+            MessageBox.Show("Minecraft Helper\n\tby Discore\n\nVK: vk.com/id109841256");
+        }
+
+        private void tellrawToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            panel.Controls.Clear();
+            tellrawMain = new TellrawForm();
+            settings.Generate = "tellraw";
+            foreach(Control control in tellrawMain.returnControls())
+            {
+                panel.Controls.Add(control);
+            }
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            switch(settings.Generate)
+            {
+                case "tellraw":
+                {
+                    Clipboard.SetText(tellrawMain.TellrawGen());
+                        MessageBox.Show("Команда скопирована в буфер обмена.\n Для вставки команды нажмите сочетание клавиш CTRL + V в чате или в командном блоке.");
+                    break;
+                }
+            }
         }
     }
 }

@@ -5,9 +5,8 @@ using System.Text;
 
 namespace MinecraftHelper
 {
-    class Settings
+    interface Generate
     {
-        public bool InternetExists;
-        public string Generate;
+        string returnCode();
     }
 }

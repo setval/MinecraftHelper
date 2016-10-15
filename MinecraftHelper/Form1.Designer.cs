@@ -34,8 +34,9 @@
             this.проверитьПрограммуНаНаличиеОбновленийToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.programInfo = new System.Windows.Forms.ToolStripMenuItem();
             this.подключитьсяToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.blockNews = new System.Windows.Forms.WebBrowser();
             this.panel = new System.Windows.Forms.Panel();
+            this.blockNews = new System.Windows.Forms.TextBox();
+            this.gen = new System.Windows.Forms.Button();
             this.menu.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -65,6 +66,7 @@
             this.tellrawToolStripMenuItem.Name = "tellrawToolStripMenuItem";
             this.tellrawToolStripMenuItem.Size = new System.Drawing.Size(111, 22);
             this.tellrawToolStripMenuItem.Text = "Tellraw";
+            this.tellrawToolStripMenuItem.Click += new System.EventHandler(this.tellrawToolStripMenuItem_Click);
             // 
             // проверитьПрограммуНаНаличиеОбновленийToolStripMenuItem
             // 
@@ -87,15 +89,6 @@
             this.подключитьсяToolStripMenuItem.Visible = false;
             this.подключитьсяToolStripMenuItem.Click += new System.EventHandler(this.подключитьсяToolStripMenuItem_Click);
             // 
-            // blockNews
-            // 
-            this.blockNews.Location = new System.Drawing.Point(770, 27);
-            this.blockNews.MinimumSize = new System.Drawing.Size(20, 20);
-            this.blockNews.Name = "blockNews";
-            this.blockNews.Size = new System.Drawing.Size(197, 386);
-            this.blockNews.TabIndex = 1;
-            this.blockNews.Url = new System.Uri("https://raw.githubusercontent.com/DiscoreMe/MinecraftHelper/master/news", System.UriKind.Absolute);
-            // 
             // panel
             // 
             this.panel.BackColor = System.Drawing.SystemColors.Control;
@@ -104,13 +97,36 @@
             this.panel.Size = new System.Drawing.Size(742, 372);
             this.panel.TabIndex = 2;
             // 
+            // blockNews
+            // 
+            this.blockNews.Location = new System.Drawing.Point(757, 28);
+            this.blockNews.Multiline = true;
+            this.blockNews.Name = "blockNews";
+            this.blockNews.ReadOnly = true;
+            this.blockNews.ScrollBars = System.Windows.Forms.ScrollBars.Horizontal;
+            this.blockNews.Size = new System.Drawing.Size(203, 319);
+            this.blockNews.TabIndex = 4;
+            // 
+            // gen
+            // 
+            this.gen.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.gen.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.gen.Location = new System.Drawing.Point(756, 354);
+            this.gen.Name = "gen";
+            this.gen.Size = new System.Drawing.Size(204, 45);
+            this.gen.TabIndex = 5;
+            this.gen.Text = "Сгенерировать команду";
+            this.gen.UseVisualStyleBackColor = true;
+            this.gen.Click += new System.EventHandler(this.button1_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(967, 412);
-            this.Controls.Add(this.panel);
+            this.Controls.Add(this.gen);
             this.Controls.Add(this.blockNews);
+            this.Controls.Add(this.panel);
             this.Controls.Add(this.menu);
             this.MainMenuStrip = this.menu;
             this.MaximizeBox = false;
@@ -131,9 +147,10 @@
         private System.Windows.Forms.ToolStripMenuItem programInfo;
         private System.Windows.Forms.ToolStripMenuItem tellrawToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem проверитьПрограммуНаНаличиеОбновленийToolStripMenuItem;
-        private System.Windows.Forms.WebBrowser blockNews;
         private System.Windows.Forms.ToolStripMenuItem подключитьсяToolStripMenuItem;
         private System.Windows.Forms.Panel panel;
+        private System.Windows.Forms.TextBox blockNews;
+        private System.Windows.Forms.Button gen;
     }
 }
 
