@@ -37,6 +37,7 @@ namespace MinecraftHelper
                 sr = new StreamReader(resp.GetResponseStream(), Encoding.GetEncoding("UTF-8"));
                 content = sr.ReadToEnd();
                 sr.Close();
+                content = content.Replace("\\n", Environment.NewLine);
                 blockNews.Text = content;
             }
         }
