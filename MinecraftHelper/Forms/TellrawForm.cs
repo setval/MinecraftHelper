@@ -46,6 +46,8 @@ namespace MinecraftHelper.Forms
             int index = colorsTellraw.Items.IndexOf(colorsTellraw.Text);
             if (index == -1) index = 0;
             objects.Add(new TellrawObject(this.textTellraw.Text, word[index]));
+            this.textTellraw.Text = "";
+            this.colorsTellraw.Text = "Цвет";
         }
     }
 }
