@@ -19,9 +19,7 @@ namespace MinecraftHelper.Forms
             InitializeComponent();
             objects = new List<TellrawObject>();
             this.controls = new List<Control>();
-            controls.Add(this.textTellraw);
-            controls.Add(this.addTellraw);
-            controls.Add(this.constructorGroupBox);
+            controls.Add(this.constructorGroupBox);            
         }
 
         public List<Control> returnControls()
@@ -36,7 +34,18 @@ namespace MinecraftHelper.Forms
 
         private void addTellraw_Click(object sender, EventArgs e)
         {
-            objects.Add(new TellrawObject(this.textTellraw.Text));
+            List<string> word_orign = new List<string>();
+            List<string> word = new List<string>();
+            word.Add("");
+            word.Add("red");
+            word.Add("yellow");
+            word.Add("green");
+            word.Add("blue");
+            word.Add("white");
+            word.Add("black");
+            int index = colorsTellraw.Items.IndexOf(colorsTellraw.Text);
+            if (index == -1) index = 0;
+            objects.Add(new TellrawObject(this.textTellraw.Text, word[index]));
         }
     }
 }
