@@ -13,14 +13,20 @@ namespace MinecraftHelper.Forms
     {
         private List<Control> controls;
         private List<TellrawObject> objects;
+        private List<TellrawElementsForm> tellrawElementsForm;
+
+        private const int width = 35;
 
         public TellrawForm()
         {
             InitializeComponent();
             objects = new List<TellrawObject>();
+            tellrawElementsForm = new List<TellrawElementsForm>();
             this.controls = new List<Control>();
-            controls.Add(this.constructorGroupBox);            
+            controls.Add(this.constructorGroupBox);
+            controls.Add(this.elementsTellraw);
         }
+
 
         public List<Control> returnControls()
         {
@@ -45,9 +51,43 @@ namespace MinecraftHelper.Forms
             word.Add("black");
             int index = colorsTellraw.Items.IndexOf(colorsTellraw.Text);
             if (index == -1) index = 0;
-            objects.Add(new TellrawObject(this.textTellraw.Text, word[index]));
+            TellrawObject TellrawObject = new TellrawObject(this.textTellraw.Text, word[index]);
+            objects.Add(TellrawObject);
             this.textTellraw.Text = "";
             this.colorsTellraw.Text = "Цвет";
+
+            tellrawElementsForm.Add(new TellrawElementsForm());
+
+            UpdateElementsPanel();
+        }
+
+        private void UpdateElementsPanel()
+        {
+            elementsTellraw.Controls.Clear();
+            int i = 0;
+            foreach(TellrawElementsForm tef in tellrawElementsForm)
+            {
+                tef.setName(tef.returnPanelElement(), tef.getName(tef.returnPanelElement()) + Convert.ToString(i));
+                tef.setName(tef.returnShowElement(), tef.getName(tef.returnShowElement()) + Convert.ToString(i));
+                tef.setName(tef.returnDeleteElement(), tef.getName(tef.returnDeleteElement()) + Convert.ToString(i));
+                Point p = tef.getPos(tef.returnPanelElement());
+                tef.setPos(tef.returnPanelElement(), new Point(p.X, p.Y+i));
+                elementsTellraw.Controls.Add(tef.returnShowElement());
+                elementsTellraw.Controls.Add(tef.returnDeleteElement());
+                elementsTellraw.Controls.Add(tef.returnPanelElement());
+                MessageBox.Show(String.Format("{0} {1} {2}\n", tef.getName(tef.returnPanelElement()), tef.getName(tef.returnShowElement()), tef.getName(tef.returnDeleteElement())));
+                i++;
+            }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            string s = "";
+            foreach(TellrawElementsForm tef in tellrawElementsForm)
+            {
+                s = String.Format("{0} {1} {2}\n", tef.getName(tef.returnPanelElement()), tef.getName(tef.returnShowElement()), tef.getName(tef.returnDeleteElement()));
+            }
+            MessageBox.Show(s);
         }
     }
 }

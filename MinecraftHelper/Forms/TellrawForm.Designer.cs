@@ -32,11 +32,14 @@
             this.textTellraw = new System.Windows.Forms.RichTextBox();
             this.colorsTellraw = new System.Windows.Forms.ComboBox();
             this.addTellraw = new System.Windows.Forms.Button();
+            this.elementsTellraw = new System.Windows.Forms.Panel();
+            this.button1 = new System.Windows.Forms.Button();
             this.constructorGroupBox.SuspendLayout();
             this.SuspendLayout();
             // 
             // constructorGroupBox
             // 
+            this.constructorGroupBox.Controls.Add(this.button1);
             this.constructorGroupBox.Controls.Add(this.textTellraw);
             this.constructorGroupBox.Controls.Add(this.colorsTellraw);
             this.constructorGroupBox.Controls.Add(this.addTellraw);
@@ -85,11 +88,29 @@
             this.addTellraw.UseVisualStyleBackColor = true;
             this.addTellraw.Click += new System.EventHandler(this.addTellraw_Click);
             // 
+            // elementsTellraw
+            // 
+            this.elementsTellraw.Location = new System.Drawing.Point(286, 3);
+            this.elementsTellraw.Name = "elementsTellraw";
+            this.elementsTellraw.Size = new System.Drawing.Size(433, 350);
+            this.elementsTellraw.TabIndex = 1;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(71, 182);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 4;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // TellrawForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(742, 372);
+            this.Controls.Add(this.elementsTellraw);
             this.Controls.Add(this.constructorGroupBox);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "TellrawForm";
@@ -105,5 +126,7 @@
         private System.Windows.Forms.Button addTellraw;
         private System.Windows.Forms.ComboBox colorsTellraw;
         private System.Windows.Forms.RichTextBox textTellraw;
+        private System.Windows.Forms.Panel elementsTellraw;
+        private System.Windows.Forms.Button button1;
     }
 }
