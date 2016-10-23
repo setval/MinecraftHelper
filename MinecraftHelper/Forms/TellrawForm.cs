@@ -13,7 +13,7 @@ namespace MinecraftHelper.Forms
     {
         private List<Control> controls;
         private List<TellrawObject> objects;
-        private List<TellrawElementsForm> tellrawElementsForm;
+        private List<List<Control>> tellrawElementsForm;
 
         private const int width = 35;
 
@@ -21,7 +21,7 @@ namespace MinecraftHelper.Forms
         {
             InitializeComponent();
             objects = new List<TellrawObject>();
-            tellrawElementsForm = new List<TellrawElementsForm>();
+            tellrawElementsForm = new List<List<Control>>();
             this.controls = new List<Control>();
             controls.Add(this.constructorGroupBox);
             controls.Add(this.elementsTellraw);
@@ -55,8 +55,9 @@ namespace MinecraftHelper.Forms
             objects.Add(TellrawObject);
             this.textTellraw.Text = "";
             this.colorsTellraw.Text = "Цвет";
+            
 
-            tellrawElementsForm.Add(new TellrawElementsForm());
+            tellrawElementsForm.Add(new TellrawElementsForm().returnControls());
 
             UpdateElementsPanel();
         }
@@ -65,29 +66,39 @@ namespace MinecraftHelper.Forms
         {
             elementsTellraw.Controls.Clear();
             int i = 0;
-            foreach(TellrawElementsForm tef in tellrawElementsForm)
+            foreach(List<Control> list in tellrawElementsForm)
             {
-                tef.setName(tef.returnPanelElement(), tef.getName(tef.returnPanelElement()) + Convert.ToString(i));
-                tef.setName(tef.returnShowElement(), tef.getName(tef.returnShowElement()) + Convert.ToString(i));
-                tef.setName(tef.returnDeleteElement(), tef.getName(tef.returnDeleteElement()) + Convert.ToString(i));
-                Point p = tef.getPos(tef.returnPanelElement());
-                tef.setPos(tef.returnPanelElement(), new Point(p.X, p.Y+i));
-                elementsTellraw.Controls.Add(tef.returnShowElement());
-                elementsTellraw.Controls.Add(tef.returnDeleteElement());
-                elementsTellraw.Controls.Add(tef.returnPanelElement());
-                MessageBox.Show(String.Format("{0} {1} {2}\n", tef.getName(tef.returnPanelElement()), tef.getName(tef.returnShowElement()), tef.getName(tef.returnDeleteElement())));
-                i++;
+                foreach (Control tef in list)
+                {
+                    int score = 0;
+                    switch(tef.Name)
+                    {
+                        case "deleteElement_": tef.Name = "deleteElement_" + i; score = 14;  break;
+                        case "showElement_": tef.Name = "showElement_" + i; score = 12; break;
+                        case "panelElement_": tef.Name = "panelElement_" + i; score = 13; break;
+                        default: break;
+                    }
+                    //tef.Name = tef.Name + Convert.ToString(i);
+                    if (score > 0)
+                    {
+                        string buffer = "";
+                        for (int q = score; q < tef.Name.Length; q++)
+                            buffer += tef.Name[q];
+                        tef.Location = new Point(tef.Location.X, Convert.ToInt32(buffer));
+                    }
+                    elementsTellraw.Controls.Add(tef);
+                    //MessageBox.Show(String.Format("{0} {1} {2}\n", tef.getName(tef.returnPanelElement()), tef.getName(tef.returnShowElement()), tef.getName(tef.returnDeleteElement())));
+                }
+                i += width;
             }
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
             string s = "";
-            foreach(TellrawElementsForm tef in tellrawElementsForm)
-            {
-                s = String.Format("{0} {1} {2}\n", tef.getName(tef.returnPanelElement()), tef.getName(tef.returnShowElement()), tef.getName(tef.returnDeleteElement()));
-            }
-            MessageBox.Show(s);
+            foreach (List<Control> list in tellrawElementsForm)
+                foreach (Control control in list)
+                    MessageBox.Show(control.Name);
         }
     }
 }

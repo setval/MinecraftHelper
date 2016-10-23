@@ -29,11 +29,11 @@
         private void InitializeComponent()
         {
             this.constructorGroupBox = new System.Windows.Forms.GroupBox();
+            this.button1 = new System.Windows.Forms.Button();
             this.textTellraw = new System.Windows.Forms.RichTextBox();
             this.colorsTellraw = new System.Windows.Forms.ComboBox();
             this.addTellraw = new System.Windows.Forms.Button();
             this.elementsTellraw = new System.Windows.Forms.Panel();
-            this.button1 = new System.Windows.Forms.Button();
             this.constructorGroupBox.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -49,6 +49,16 @@
             this.constructorGroupBox.TabIndex = 0;
             this.constructorGroupBox.TabStop = false;
             this.constructorGroupBox.Text = "Конструктор";
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(71, 182);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 4;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // textTellraw
             // 
@@ -90,20 +100,11 @@
             // 
             // elementsTellraw
             // 
-            this.elementsTellraw.Location = new System.Drawing.Point(286, 3);
+            this.elementsTellraw.AutoScroll = true;
+            this.elementsTellraw.Location = new System.Drawing.Point(286, 10);
             this.elementsTellraw.Name = "elementsTellraw";
             this.elementsTellraw.Size = new System.Drawing.Size(433, 350);
             this.elementsTellraw.TabIndex = 1;
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(71, 182);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 4;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // TellrawForm
             // 

@@ -36,6 +36,8 @@
             // 
             // showElement_
             // 
+            this.showElement_.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.showElement_.ForeColor = System.Drawing.SystemColors.HotTrack;
             this.showElement_.Location = new System.Drawing.Point(3, 3);
             this.showElement_.Name = "showElement_";
             this.showElement_.Size = new System.Drawing.Size(355, 26);
@@ -45,6 +47,8 @@
             // 
             // deleteElement_
             // 
+            this.deleteElement_.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.deleteElement_.ForeColor = System.Drawing.SystemColors.HotTrack;
             this.deleteElement_.Location = new System.Drawing.Point(364, 3);
             this.deleteElement_.Name = "deleteElement_";
             this.deleteElement_.Size = new System.Drawing.Size(43, 26);
@@ -56,7 +60,6 @@
             // 
             this.panelElement_.Controls.Add(this.deleteElement_);
             this.panelElement_.Controls.Add(this.showElement_);
-            this.panelElement_.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelElement_.Location = new System.Drawing.Point(0, 0);
             this.panelElement_.Name = "panelElement_";
             this.panelElement_.Size = new System.Drawing.Size(410, 32);
