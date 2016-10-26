@@ -116,5 +116,15 @@ namespace MinecraftHelper
                 }
             }
         }
+
+        private void помощьToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Нажмите на Minecraft Helper слева-сверху и откройте доступный генератор команд.");
+        }
+
+        private void проверитьПрограммуНаНаличиеОбновленийToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Не работает =(");
+        }
     }
 }
