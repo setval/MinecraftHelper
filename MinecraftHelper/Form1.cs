@@ -20,17 +20,24 @@ namespace MinecraftHelper
             InitializeComponent();
         }
         private Settings settings = new Settings();
-        private TextBox webNews = null;
         private TellrawForm tellrawMain;
+        private string last_version = "";
+        private string link_new_version = "";
 
         private void MainForm_Load(object sender, EventArgs e)
         {
+            this.Text = "Minecraft Helper by Discore (" + settings.version + ")";
             try
             {
                 HttpWebRequest req;
                 HttpWebResponse resp;
                 StreamReader sr;
                 string content;
+                req = (HttpWebRequest)WebRequest.Create("https://raw.githubusercontent.com/DiscoreMe/MinecraftHelper/master/REST/version");
+                resp = (HttpWebResponse)req.GetResponse();
+                sr = new StreamReader(resp.GetResponseStream(), Encoding.GetEncoding("UTF-8"));
+                last_version = sr.ReadLine();
+                link_new_version = sr.ReadLine();
                 req = (HttpWebRequest)WebRequest.Create("https://raw.githubusercontent.com/DiscoreMe/MinecraftHelper/master/REST/news");
                 resp = (HttpWebResponse)req.GetResponse();
                 sr = new StreamReader(resp.GetResponseStream(), Encoding.GetEncoding("UTF-8"));
@@ -38,10 +45,14 @@ namespace MinecraftHelper
                 sr.Close();
                 content = content.Replace("\\n", Environment.NewLine);
                 blockNews.Text = content;
+                settings.InternetExists = true;
+
+                if (settings.version != last_version) MessageBox.Show("Перейти по ссылке для скачки новой версии программы? \n" + link_new_version);                
             }
             catch
             {
                 blockNews.Text = "Нет доступа к интернету.\n\nЕсли интернет-соединение снова доступно - перезапустите проограмму";
+                settings.InternetExists = false;
             }
         }
 
@@ -87,6 +98,16 @@ namespace MinecraftHelper
         private void проверитьПрограммуНаНаличиеОбновленийToolStripMenuItem_Click(object sender, EventArgs e)
         {
             MessageBox.Show("Не работает =(");
+        }
+
+        private void blockNews_MouseEnter(object sender, EventArgs e)
+        {
+            blockNews.ScrollBars = ScrollBars.Vertical;
+        }
+
+        private void blockNews_MouseLeave(object sender, EventArgs e)
+        {
+            blockNews.ScrollBars = ScrollBars.None;
         }
     }
 }

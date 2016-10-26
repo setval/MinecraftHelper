@@ -114,9 +114,10 @@
             this.blockNews.Multiline = true;
             this.blockNews.Name = "blockNews";
             this.blockNews.ReadOnly = true;
-            this.blockNews.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.blockNews.Size = new System.Drawing.Size(203, 319);
             this.blockNews.TabIndex = 4;
+            this.blockNews.MouseEnter += new System.EventHandler(this.blockNews_MouseEnter);
+            this.blockNews.MouseLeave += new System.EventHandler(this.blockNews_MouseLeave);
             // 
             // gen
             // 
