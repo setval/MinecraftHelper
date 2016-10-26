@@ -28,16 +28,17 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.menu = new System.Windows.Forms.MenuStrip();
             this.minecraftHelperToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tellrawToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.проверитьПрограммуНаНаличиеОбновленийToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.programInfo = new System.Windows.Forms.ToolStripMenuItem();
             this.подключитьсяToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.помощьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel = new System.Windows.Forms.Panel();
             this.blockNews = new System.Windows.Forms.TextBox();
             this.gen = new System.Windows.Forms.Button();
-            this.помощьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menu.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -92,6 +93,13 @@
             this.подключитьсяToolStripMenuItem.Visible = false;
             this.подключитьсяToolStripMenuItem.Click += new System.EventHandler(this.подключитьсяToolStripMenuItem_Click);
             // 
+            // помощьToolStripMenuItem
+            // 
+            this.помощьToolStripMenuItem.Name = "помощьToolStripMenuItem";
+            this.помощьToolStripMenuItem.Size = new System.Drawing.Size(68, 20);
+            this.помощьToolStripMenuItem.Text = "Помощь";
+            this.помощьToolStripMenuItem.Click += new System.EventHandler(this.помощьToolStripMenuItem_Click);
+            // 
             // panel
             // 
             this.panel.BackColor = System.Drawing.SystemColors.Control;
@@ -122,13 +130,6 @@
             this.gen.UseVisualStyleBackColor = true;
             this.gen.Click += new System.EventHandler(this.button1_Click);
             // 
-            // помощьToolStripMenuItem
-            // 
-            this.помощьToolStripMenuItem.Name = "помощьToolStripMenuItem";
-            this.помощьToolStripMenuItem.Size = new System.Drawing.Size(68, 20);
-            this.помощьToolStripMenuItem.Text = "Помощь";
-            this.помощьToolStripMenuItem.Click += new System.EventHandler(this.помощьToolStripMenuItem_Click);
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -138,10 +139,11 @@
             this.Controls.Add(this.blockNews);
             this.Controls.Add(this.panel);
             this.Controls.Add(this.menu);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menu;
             this.MaximizeBox = false;
             this.Name = "MainForm";
-            this.Text = "Minecraft Helper by Discore (dev-1.261016)";
+            this.Text = "Minecraft Helper by Discore (dev-2.261016)";
             this.Load += new System.EventHandler(this.MainForm_Load);
             this.menu.ResumeLayout(false);
             this.menu.PerformLayout();
