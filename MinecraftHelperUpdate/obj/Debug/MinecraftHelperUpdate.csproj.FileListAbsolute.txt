@@ -1,0 +1,6 @@
+d:\документы\visual studio 2015\Projects\MinecraftHelper\MinecraftHelperUpdate\bin\Debug\MinecraftHelperUpdate.exe.config
+d:\документы\visual studio 2015\Projects\MinecraftHelper\MinecraftHelperUpdate\bin\Debug\MinecraftHelperUpdate.exe
+d:\документы\visual studio 2015\Projects\MinecraftHelper\MinecraftHelperUpdate\bin\Debug\MinecraftHelperUpdate.pdb
+d:\документы\visual studio 2015\Projects\MinecraftHelper\MinecraftHelperUpdate\obj\Debug\MinecraftHelperUpdate.csprojResolveAssemblyReference.cache
+d:\документы\visual studio 2015\Projects\MinecraftHelper\MinecraftHelperUpdate\obj\Debug\MinecraftHelperUpdate.exe
+d:\документы\visual studio 2015\Projects\MinecraftHelper\MinecraftHelperUpdate\obj\Debug\MinecraftHelperUpdate.pdb
