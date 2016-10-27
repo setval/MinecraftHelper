@@ -29,13 +29,10 @@ namespace MinecraftHelper
             this.Text = "Minecraft Helper by Discore (" + settings.version + ")";
             try
             {
-                HttpWebRequest req;
-                HttpWebResponse resp;
-                StreamReader sr;
+                HttpWebRequest req = (HttpWebRequest)WebRequest.Create("https://raw.githubusercontent.com/DiscoreMe/MinecraftHelper/master/REST/version");
+                HttpWebResponse resp = (HttpWebResponse)req.GetResponse();
+                StreamReader sr = new StreamReader(resp.GetResponseStream(), Encoding.GetEncoding("UTF-8"));
                 string content;
-                req = (HttpWebRequest)WebRequest.Create("https://raw.githubusercontent.com/DiscoreMe/MinecraftHelper/master/REST/version");
-                resp = (HttpWebResponse)req.GetResponse();
-                sr = new StreamReader(resp.GetResponseStream(), Encoding.GetEncoding("UTF-8"));
                 last_version = sr.ReadLine();
                 link_new_version = sr.ReadLine();
                 req = (HttpWebRequest)WebRequest.Create("https://raw.githubusercontent.com/DiscoreMe/MinecraftHelper/master/REST/news");
@@ -47,7 +44,21 @@ namespace MinecraftHelper
                 blockNews.Text = content;
                 settings.InternetExists = true;
 
-                if (settings.version != last_version) MessageBox.Show("Перейти по ссылке для скачки новой версии программы? \n" + link_new_version);                
+                if (settings.version != last_version) 
+                {
+                    var mes = MessageBox.Show(String.Format("Доступна новая версия {0} для скачивания. Перейти к загрузке?\nДанное приложение будет перезапущено.",last_version), "Обновление", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+                    if (mes == DialogResult.Yes)
+                    {
+                        req = (HttpWebRequest)WebRequest.Create("https://raw.githubusercontent.com/DiscoreMe/MinecraftHelper/master/REST/MinecraftHelperUpdater.exe");
+                        resp = (HttpWebResponse)req.GetResponse();
+                        sr = new StreamReader(resp.GetResponseStream(), Encoding.GetEncoding("UTF-8"));
+                        WebClient myWebClient = new WebClient();
+                        myWebClient.DownloadFile(content, "MinecraftHelperUpdater.exe");
+                        System.Diagnostics.Process.Start("MinecraftHelperUpdater.exe");
+                        Application.Exit();
+                    }
+
+                }    
             }
             catch
             {
