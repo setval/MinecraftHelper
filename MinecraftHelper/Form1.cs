@@ -27,6 +27,13 @@ namespace MinecraftHelper
         private void MainForm_Load(object sender, EventArgs e)
         {
             this.Text = "Minecraft Helper by Discore (" + settings.version + ")";
+            if (File.Exists("MinecraftHelperUpdater.exe"))
+            {
+
+                try { File.Delete("MinecraftHelperUpdater.exe"); }
+                catch { }
+                MessageBox.Show("Благодарим вас за установку обновления версии "+settings.version+"!\nСписок нововведений вы можете видеть справа");
+            }
             try
             {
                 HttpWebRequest req = (HttpWebRequest)WebRequest.Create("https://raw.githubusercontent.com/DiscoreMe/MinecraftHelper/master/REST/version");
@@ -43,19 +50,21 @@ namespace MinecraftHelper
                 content = content.Replace("\\n", Environment.NewLine);
                 blockNews.Text = content;
                 settings.InternetExists = true;
-
+                sr.Close();
+                resp.Close();
                 if (settings.version != last_version) 
                 {
                     var mes = MessageBox.Show(String.Format("Доступна новая версия {0} для скачивания. Перейти к загрузке?\nДанное приложение будет перезапущено.",last_version), "Обновление", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
                     if (mes == DialogResult.Yes)
                     {
-                        req = (HttpWebRequest)WebRequest.Create("https://raw.githubusercontent.com/DiscoreMe/MinecraftHelper/master/REST/MinecraftHelperUpdater.exe");
-                        resp = (HttpWebResponse)req.GetResponse();
-                        sr = new StreamReader(resp.GetResponseStream(), Encoding.GetEncoding("UTF-8"));
-                        WebClient myWebClient = new WebClient();
-                        myWebClient.DownloadFile(content, "MinecraftHelperUpdater.exe");
-                        System.Diagnostics.Process.Start("MinecraftHelperUpdater.exe");
-                        Application.Exit();
+                        try
+                        {
+                            WebClient myWebClient = new WebClient();
+                            myWebClient.DownloadFile("https://raw.githubusercontent.com/DiscoreMe/MinecraftHelper/master/REST/MinecraftHelperUpdater.exe", "MinecraftHelperUpdater.exe");                            
+                            System.Diagnostics.Process.Start("MinecraftHelperUpdater.exe");
+                            Application.Exit();
+                        }
+                        catch (Exception ex) { MessageBox.Show(ex.ToString()); }
                     }
 
                 }    
@@ -106,10 +115,6 @@ namespace MinecraftHelper
             MessageBox.Show("Нажмите на Minecraft Helper слева-сверху и откройте доступный генератор команд.");
         }
 
-        private void проверитьПрограммуНаНаличиеОбновленийToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            MessageBox.Show("Не работает =(");
-        }
 
         private void blockNews_MouseEnter(object sender, EventArgs e)
         {

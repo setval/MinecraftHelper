@@ -25,6 +25,7 @@ namespace MinecraftHelperUpdate
                 catch { Console.WriteLine("Ошибка в удалении старой версии"); }
                 File.Move("MinecraftHelperNew.exe", "MinecraftHelper.exe");
                 System.Diagnostics.Process.Start("MinecraftHelper.exe");
+                
             }
             catch(Exception ex)
             {

@@ -32,7 +32,6 @@
             this.menu = new System.Windows.Forms.MenuStrip();
             this.minecraftHelperToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tellrawToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.проверитьПрограммуНаНаличиеОбновленийToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.programInfo = new System.Windows.Forms.ToolStripMenuItem();
             this.подключитьсяToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.помощьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -46,7 +45,6 @@
             // 
             this.menu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.minecraftHelperToolStripMenuItem,
-            this.проверитьПрограммуНаНаличиеОбновленийToolStripMenuItem,
             this.programInfo,
             this.подключитьсяToolStripMenuItem,
             this.помощьToolStripMenuItem});
@@ -70,13 +68,6 @@
             this.tellrawToolStripMenuItem.Size = new System.Drawing.Size(111, 22);
             this.tellrawToolStripMenuItem.Text = "Tellraw";
             this.tellrawToolStripMenuItem.Click += new System.EventHandler(this.tellrawToolStripMenuItem_Click);
-            // 
-            // проверитьПрограммуНаНаличиеОбновленийToolStripMenuItem
-            // 
-            this.проверитьПрограммуНаНаличиеОбновленийToolStripMenuItem.Name = "проверитьПрограммуНаНаличиеОбновленийToolStripMenuItem";
-            this.проверитьПрограммуНаНаличиеОбновленийToolStripMenuItem.Size = new System.Drawing.Size(210, 20);
-            this.проверитьПрограммуНаНаличиеОбновленийToolStripMenuItem.Text = "Проверка на наличие обновлений";
-            this.проверитьПрограммуНаНаличиеОбновленийToolStripMenuItem.Click += new System.EventHandler(this.проверитьПрограммуНаНаличиеОбновленийToolStripMenuItem_Click);
             // 
             // programInfo
             // 
@@ -159,7 +150,6 @@
         private System.Windows.Forms.ToolStripMenuItem minecraftHelperToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem programInfo;
         private System.Windows.Forms.ToolStripMenuItem tellrawToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem проверитьПрограммуНаНаличиеОбновленийToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem подключитьсяToolStripMenuItem;
         private System.Windows.Forms.Panel panel;
         private System.Windows.Forms.TextBox blockNews;
