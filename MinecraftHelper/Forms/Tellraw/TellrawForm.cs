@@ -104,15 +104,12 @@ namespace MinecraftHelper.Forms
             int i = listObjects.SelectedIndex;            
             if (i != -1)
             {
-                string text = "";
                 string texts = (objects[i].getText() != "") ? objects[i].getText() : "(Пусто)";
                 string color = (objects[i].getColor() != "") ? returnRussianWord(objects[i].getColor()) : "(Пусто)";
                 string formats = "Жирный";
               /*  foreach (string obj in objects[i].getListFormats())
                     MessageBox.Show(obj);
                     */
-                text = String.Format("Текст: {0}\n=========================\nЦвет: {1}\n=========================\nФорматы: {2}", texts, color, formats);
-                MessageBox.Show(text, "Предпросмотр");
                 ShowTellrawForm.Show(texts, color, formats);
             }
         }
