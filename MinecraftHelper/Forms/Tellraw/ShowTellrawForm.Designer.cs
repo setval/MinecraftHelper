@@ -40,9 +40,9 @@
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.button1.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.button1.Location = new System.Drawing.Point(131, 126);
+            this.button1.Location = new System.Drawing.Point(146, 98);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(161, 51);
+            this.button1.Size = new System.Drawing.Size(140, 36);
             this.button1.TabIndex = 0;
             this.button1.Text = "Закрыть";
             this.button1.UseVisualStyleBackColor = true;
@@ -87,7 +87,7 @@
             this.AcceptButton = this.button1;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(437, 189);
+            this.ClientSize = new System.Drawing.Size(437, 154);
             this.Controls.Add(this.format);
             this.Controls.Add(this.color);
             this.Controls.Add(this.text);
@@ -97,6 +97,8 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "ShowTellrawForm";
+            this.ShowIcon = false;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.ResumeLayout(false);
             this.PerformLayout();
 

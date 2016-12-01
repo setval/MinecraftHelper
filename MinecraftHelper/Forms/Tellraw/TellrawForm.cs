@@ -106,7 +106,17 @@ namespace MinecraftHelper.Forms
             {
                 string texts = (objects[i].getText() != "") ? objects[i].getText() : "(Пусто)";
                 string color = (objects[i].getColor() != "") ? returnRussianWord(objects[i].getColor()) : "(Пусто)";
-                string formats = "Жирный";
+                string formats;
+                if (objects[i].getListFormats().Count == 0)
+                    formats = "(Пусто)";
+                else
+                {
+                    formats = "";
+                    foreach (string obj in objects[i].getListFormats())
+                        formats += returnRussianWord(obj) + ", ";
+                    formats = formats.Substring(0, formats.Length - 2);
+                }
+                        
               /*  foreach (string obj in objects[i].getListFormats())
                     MessageBox.Show(obj);
                     */
