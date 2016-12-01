@@ -1,11 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using MinecraftHelper.Forms.Tellraw;
 
 namespace MinecraftHelper.Forms
 {
@@ -52,7 +49,17 @@ namespace MinecraftHelper.Forms
             int index = colorsTellraw.Items.IndexOf(colorsTellraw.Text);
             if (index == -1) index = 0;
 
-            TellrawObject TellrawObject = new TellrawObject(this.textTellraw.Text, word[index]);
+            List<string> listFormatis = new List<string>();
+            foreach (int indexChecked in listFormats.CheckedIndices)
+                switch(indexChecked)
+                {
+                    case 0: listFormatis.Add("bold"); break;
+                    case 1: listFormatis.Add("italic"); break;
+                    case 2: listFormatis.Add("underlined"); break;
+                    case 3: listFormatis.Add("strikethrough"); break;
+                    case 4: listFormatis.Add("obfuscated"); break;
+                }  
+            TellrawObject TellrawObject = new TellrawObject(this.textTellraw.Text, word[index], listFormatis);
             objects.Add(TellrawObject);
             this.textTellraw.Text = "";
             this.colorsTellraw.Text = "Цвет";
@@ -76,7 +83,14 @@ namespace MinecraftHelper.Forms
         private void UpdateElementsPanel()
         {
             listObjects.Items.Clear();
-            foreach(TellrawObject obj in objects)
+            listFormats.ClearSelected();
+            listFormats.SetItemChecked(0, false);
+            listFormats.SetItemChecked(1, false);
+            listFormats.SetItemChecked(2, false);
+            listFormats.SetItemChecked(3, false);
+            listFormats.SetItemChecked(4, false);
+
+            foreach (TellrawObject obj in objects)
             {
                 if (obj.getText().Equals(""))
                     listObjects.Items.Add("(Пусто)");
@@ -85,29 +99,49 @@ namespace MinecraftHelper.Forms
             }
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            string s = "";
-            foreach (List<Control> list in tellrawElementsForm)
-                foreach (Control control in list)
-                    MessageBox.Show(control.Name);
-        }
-
-        private void constructorGroupBox_Enter(object sender, EventArgs e)
-        {
-
-        }
-
         private void listObjects_SelectedIndexChanged(object sender, EventArgs e)
         {
-            
             int i = listObjects.SelectedIndex;            
             if (i != -1)
             {
-                string text = (objects[i].getText() != "") ? objects[i].getText() : "(Пусто)";
-                text = String.Format("Текст: {0}\n\nЦвет: {1}", text, (objects[i].getColor() != "") ? objects[i].getColor() : "(Пусто)");
-                MessageBox.Show(text);
+                string text = "";
+                string texts = (objects[i].getText() != "") ? objects[i].getText() : "(Пусто)";
+                string color = (objects[i].getColor() != "") ? returnRussianWord(objects[i].getColor()) : "(Пусто)";
+                string formats = "Жирный";
+              /*  foreach (string obj in objects[i].getListFormats())
+                    MessageBox.Show(obj);
+                    */
+                text = String.Format("Текст: {0}\n=========================\nЦвет: {1}\n=========================\nФорматы: {2}", texts, color, formats);
+                MessageBox.Show(text, "Предпросмотр");
+                ShowTellrawForm.Show(texts, color, formats);
             }
+        }
+
+        private void listFormats_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private string returnRussianWord(string word)
+        {
+            string returnWord = "";
+            switch(word)
+            {
+                case "red": returnWord = "Красный"; break;
+                case "yellow": returnWord = "Желтый"; break;
+                case "green": returnWord = "Зеленый"; break;
+                case "blue": returnWord = "Синий"; break;
+                case "white": returnWord = "Белый"; break;
+                case "black": returnWord = "Черный"; break;
+                case "bold": returnWord = "Жирный"; break;
+                case "italic": returnWord = "Курсив"; break;
+                case "underlined": returnWord = "Подчеркнутый"; break;
+                case "strikethrough": returnWord = "Зачеркнутый"; break;
+                case "obfuscated": returnWord = "Запутанный"; break;
+                case "":
+                default: returnWord = ""; break;
+            }
+            return returnWord;
         }
     }
 }

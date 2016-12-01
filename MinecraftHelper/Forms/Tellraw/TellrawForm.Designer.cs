@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.constructorGroupBox = new System.Windows.Forms.GroupBox();
+            this.listFormats = new System.Windows.Forms.CheckedListBox();
             this.textTellraw = new System.Windows.Forms.RichTextBox();
             this.colorsTellraw = new System.Windows.Forms.ComboBox();
             this.addTellraw = new System.Windows.Forms.Button();
@@ -40,6 +41,7 @@
             // 
             // constructorGroupBox
             // 
+            this.constructorGroupBox.Controls.Add(this.listFormats);
             this.constructorGroupBox.Controls.Add(this.textTellraw);
             this.constructorGroupBox.Controls.Add(this.colorsTellraw);
             this.constructorGroupBox.Controls.Add(this.addTellraw);
@@ -49,7 +51,21 @@
             this.constructorGroupBox.TabIndex = 0;
             this.constructorGroupBox.TabStop = false;
             this.constructorGroupBox.Text = "Конструктор";
-            this.constructorGroupBox.Enter += new System.EventHandler(this.constructorGroupBox_Enter);
+            // 
+            // listFormats
+            // 
+            this.listFormats.FormattingEnabled = true;
+            this.listFormats.Items.AddRange(new object[] {
+            "Полужирный",
+            "Курсивный",
+            "Подчеркнутый",
+            "Зачеркнутый",
+            "Запутанынй"});
+            this.listFormats.Location = new System.Drawing.Point(6, 117);
+            this.listFormats.Name = "listFormats";
+            this.listFormats.Size = new System.Drawing.Size(250, 79);
+            this.listFormats.TabIndex = 4;
+            this.listFormats.SelectedIndexChanged += new System.EventHandler(this.listFormats_SelectedIndexChanged);
             // 
             // textTellraw
             // 
@@ -135,5 +151,6 @@
         private System.Windows.Forms.RichTextBox textTellraw;
         private System.Windows.Forms.Panel elementsTellraw;
         private System.Windows.Forms.ListBox listObjects;
+        private System.Windows.Forms.CheckedListBox listFormats;
     }
 }

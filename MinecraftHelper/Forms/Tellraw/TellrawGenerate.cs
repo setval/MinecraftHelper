@@ -10,6 +10,7 @@ namespace MinecraftHelper.Forms
         private List<string> texts;
         private List<string> code;
         private List<string> colors;
+        private List<List<string>> formats;
 
         private string command;
 
@@ -19,13 +20,18 @@ namespace MinecraftHelper.Forms
             foreach (string s in texts)
             {
                 string d_string = "";
-                if (colors[score] == "")
+                if (colors[score] == "" && formats[score].Count == 0)
                     code.Add("{\"text\":\"" + s + "\"}");
                 else
                 {
                     if (colors[score] != "") d_string = ",\"color\":\"" + colors[score] + "\"";
+                    if (formats[score].Count != 0)
+                    {                        
+                        foreach (string str in formats[score])
+                                d_string += ",\"" + str + "\":true";
+                    }
                     code.Add("{\"text\":\"" + s + "\""+d_string+"}");
-                }                   
+                }            
                 score++;
             }
             command = "/tellraw @p [\"\"";
@@ -41,10 +47,13 @@ namespace MinecraftHelper.Forms
             texts = new List<string>();
             code = new List<string>();
             colors = new List<string>();
+            formats = new List<List<string>>();
+            
             foreach (TellrawObject tellobj in obj)
             {
                 texts.Add(tellobj.getText());
                 colors.Add(tellobj.getColor());
+                formats.Add(tellobj.getListFormats());
             }
             
             generate();

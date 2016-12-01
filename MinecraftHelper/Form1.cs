@@ -42,7 +42,7 @@ namespace MinecraftHelper
                 string content;
                 last_version = sr.ReadLine();
                 link_new_version = sr.ReadLine();
-                req = (HttpWebRequest)WebRequest.Create("https://raw.githubusercontent.com/DiscoreMe/MinecraftHelper/master/REST/news");
+                req = (HttpWebRequest)WebRequest.Create("http://discoreme.github.io/MinecraftHelper/newsProgram/");
                 resp = (HttpWebResponse)req.GetResponse();
                 sr = new StreamReader(resp.GetResponseStream(), Encoding.GetEncoding("UTF-8"));
                 content = sr.ReadToEnd();
