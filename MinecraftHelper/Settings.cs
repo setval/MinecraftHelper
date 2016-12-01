@@ -9,6 +9,6 @@ namespace MinecraftHelper
     {
         public bool InternetExists;
         public string Generate;
-        public string version = "dev-4";
+        public string version = "dev-5";
     }
 }
