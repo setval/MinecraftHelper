@@ -82,7 +82,7 @@ namespace MinecraftHelper
 
         private void programInfo_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Minecraft Helper\n\tby Discore\n\nVK: vk.com/id109841256");
+            MessageBox.Show("Minecraft Helper\n\tby Discore\n\nVK: vk.com/id109841256\n\nGitHub: https://github.com/DiscoreMe/MinecraftHelper");
         }
 
         private void tellrawToolStripMenuItem_Click(object sender, EventArgs e)

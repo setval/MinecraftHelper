@@ -12,6 +12,7 @@ namespace MinecraftHelper.Forms
         private List<TellrawObject> objects;
         public List<List<Control>> tellrawElementsForm;
 
+        private bool hideShowList = true;
         private const int width = 35;
 
         public TellrawForm()
@@ -149,6 +150,38 @@ namespace MinecraftHelper.Forms
                 default: returnWord = ""; break;
             }
             return returnWord;
+        }
+
+        addScoreboardForm aSF;
+
+        private void addScP_Click(object sender, EventArgs e)
+        {
+            addScoreboardForm aSF = new addScoreboardForm();
+            aSF.showAddScoreBoardForm(1);
+           /* while (aSF.label1.Text == "abort")
+            {
+                
+            }
+            aSF.label1.Text = "abort";
+            aSF.Close();*/
+            if (aSF.comboBox1.SelectedIndex != 0)
+                MessageBox.Show(aSF.textBox1.Text);
+        }
+
+        private void btn_showhidelist_Click(object sender, EventArgs e)
+        {
+            if (hideShowList)
+            {
+                hideShowList = false;
+                btn_showhidelist.Text = "Показать список";
+                listObjects.Visible = false;
+            }
+            else
+            {
+                hideShowList = true;
+                btn_showhidelist.Text = "Скрыть список";
+                listObjects.Visible = true;
+            }
         }
     }
 }

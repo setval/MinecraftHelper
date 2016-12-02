@@ -45,9 +45,9 @@
             // 
             this.menu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.minecraftHelperToolStripMenuItem,
-            this.programInfo,
             this.подключитьсяToolStripMenuItem,
-            this.помощьToolStripMenuItem});
+            this.помощьToolStripMenuItem,
+            this.programInfo});
             this.menu.Location = new System.Drawing.Point(0, 0);
             this.menu.Name = "menu";
             this.menu.Size = new System.Drawing.Size(967, 24);

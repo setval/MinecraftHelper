@@ -29,18 +29,26 @@
         private void InitializeComponent()
         {
             this.constructorGroupBox = new System.Windows.Forms.GroupBox();
+            this.button2 = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.addScP = new System.Windows.Forms.Button();
             this.listFormats = new System.Windows.Forms.CheckedListBox();
             this.textTellraw = new System.Windows.Forms.RichTextBox();
             this.colorsTellraw = new System.Windows.Forms.ComboBox();
             this.addTellraw = new System.Windows.Forms.Button();
             this.elementsTellraw = new System.Windows.Forms.Panel();
             this.listObjects = new System.Windows.Forms.ListBox();
+            this.btn_showhidelist = new System.Windows.Forms.Button();
             this.constructorGroupBox.SuspendLayout();
             this.elementsTellraw.SuspendLayout();
             this.SuspendLayout();
             // 
             // constructorGroupBox
             // 
+            this.constructorGroupBox.Controls.Add(this.btn_showhidelist);
+            this.constructorGroupBox.Controls.Add(this.button2);
+            this.constructorGroupBox.Controls.Add(this.label1);
+            this.constructorGroupBox.Controls.Add(this.addScP);
             this.constructorGroupBox.Controls.Add(this.listFormats);
             this.constructorGroupBox.Controls.Add(this.textTellraw);
             this.constructorGroupBox.Controls.Add(this.colorsTellraw);
@@ -51,6 +59,39 @@
             this.constructorGroupBox.TabIndex = 0;
             this.constructorGroupBox.TabStop = false;
             this.constructorGroupBox.Text = "Конструктор";
+            // 
+            // button2
+            // 
+            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button2.Location = new System.Drawing.Point(155, 241);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(75, 23);
+            this.button2.TabIndex = 7;
+            this.button2.Text = "Наведении";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Visible = false;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(89, 218);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(87, 13);
+            this.label1.TabIndex = 6;
+            this.label1.Text = "Действие при...";
+            this.label1.Visible = false;
+            // 
+            // addScP
+            // 
+            this.addScP.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.addScP.Location = new System.Drawing.Point(22, 241);
+            this.addScP.Name = "addScP";
+            this.addScP.Size = new System.Drawing.Size(75, 23);
+            this.addScP.TabIndex = 5;
+            this.addScP.Text = "Нажатии";
+            this.addScP.UseVisualStyleBackColor = true;
+            this.addScP.Visible = false;
+            this.addScP.Click += new System.EventHandler(this.addScP_Click);
             // 
             // listFormats
             // 
@@ -127,6 +168,17 @@
             this.listObjects.TabIndex = 0;
             this.listObjects.SelectedIndexChanged += new System.EventHandler(this.listObjects_SelectedIndexChanged);
             // 
+            // btn_showhidelist
+            // 
+            this.btn_showhidelist.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_showhidelist.Location = new System.Drawing.Point(6, 282);
+            this.btn_showhidelist.Name = "btn_showhidelist";
+            this.btn_showhidelist.Size = new System.Drawing.Size(249, 23);
+            this.btn_showhidelist.TabIndex = 8;
+            this.btn_showhidelist.Text = "Скрыть список ";
+            this.btn_showhidelist.UseVisualStyleBackColor = true;
+            this.btn_showhidelist.Click += new System.EventHandler(this.btn_showhidelist_Click);
+            // 
             // TellrawForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -138,6 +190,7 @@
             this.Name = "TellrawForm";
             this.Text = "TellrawForm";
             this.constructorGroupBox.ResumeLayout(false);
+            this.constructorGroupBox.PerformLayout();
             this.elementsTellraw.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -152,5 +205,9 @@
         private System.Windows.Forms.Panel elementsTellraw;
         private System.Windows.Forms.ListBox listObjects;
         private System.Windows.Forms.CheckedListBox listFormats;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button addScP;
+        private System.Windows.Forms.Button btn_showhidelist;
     }
 }
