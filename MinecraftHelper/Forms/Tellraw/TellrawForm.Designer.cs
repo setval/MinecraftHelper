@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.constructorGroupBox = new System.Windows.Forms.GroupBox();
+            this.btn_showhidelist = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.addScP = new System.Windows.Forms.Button();
@@ -38,7 +39,6 @@
             this.addTellraw = new System.Windows.Forms.Button();
             this.elementsTellraw = new System.Windows.Forms.Panel();
             this.listObjects = new System.Windows.Forms.ListBox();
-            this.btn_showhidelist = new System.Windows.Forms.Button();
             this.constructorGroupBox.SuspendLayout();
             this.elementsTellraw.SuspendLayout();
             this.SuspendLayout();
@@ -59,6 +59,17 @@
             this.constructorGroupBox.TabIndex = 0;
             this.constructorGroupBox.TabStop = false;
             this.constructorGroupBox.Text = "Конструктор";
+            // 
+            // btn_showhidelist
+            // 
+            this.btn_showhidelist.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_showhidelist.Location = new System.Drawing.Point(6, 282);
+            this.btn_showhidelist.Name = "btn_showhidelist";
+            this.btn_showhidelist.Size = new System.Drawing.Size(249, 23);
+            this.btn_showhidelist.TabIndex = 8;
+            this.btn_showhidelist.Text = "Скрыть список ";
+            this.btn_showhidelist.UseVisualStyleBackColor = true;
+            this.btn_showhidelist.Click += new System.EventHandler(this.btn_showhidelist_Click);
             // 
             // button2
             // 
@@ -127,7 +138,17 @@
             "Зеленый",
             "Синий",
             "Белый",
-            "Черный"});
+            "Черный",
+            "Бирюзовый",
+            "Золотой",
+            "Пурпурный",
+            "Темно-красный",
+            "Темно-желтый",
+            "Темно-зеленый",
+            "Темно-синий",
+            "Темно-пурпурный",
+            "Темно-бирюзовый",
+            "Серый"});
             this.colorsTellraw.Location = new System.Drawing.Point(6, 90);
             this.colorsTellraw.Name = "colorsTellraw";
             this.colorsTellraw.Size = new System.Drawing.Size(250, 21);
@@ -167,17 +188,6 @@
             this.listObjects.Size = new System.Drawing.Size(427, 342);
             this.listObjects.TabIndex = 0;
             this.listObjects.SelectedIndexChanged += new System.EventHandler(this.listObjects_SelectedIndexChanged);
-            // 
-            // btn_showhidelist
-            // 
-            this.btn_showhidelist.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_showhidelist.Location = new System.Drawing.Point(6, 282);
-            this.btn_showhidelist.Name = "btn_showhidelist";
-            this.btn_showhidelist.Size = new System.Drawing.Size(249, 23);
-            this.btn_showhidelist.TabIndex = 8;
-            this.btn_showhidelist.Text = "Скрыть список ";
-            this.btn_showhidelist.UseVisualStyleBackColor = true;
-            this.btn_showhidelist.Click += new System.EventHandler(this.btn_showhidelist_Click);
             // 
             // TellrawForm
             // 

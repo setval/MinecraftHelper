@@ -68,12 +68,6 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Tellraw\addScoreboardForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\Tellraw\addScoreboardForm.Designer.cs">
-      <DependentUpon>addScoreboardForm.cs</DependentUpon>
-    </Compile>
     <Compile Include="Forms\Tellraw\ShowTellrawForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -102,9 +96,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.ru.resx">
       <DependentUpon>Form1.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Tellraw\addScoreboardForm.resx">
-      <DependentUpon>addScoreboardForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Tellraw\ShowTellrawForm.resx">
       <DependentUpon>ShowTellrawForm.cs</DependentUpon>

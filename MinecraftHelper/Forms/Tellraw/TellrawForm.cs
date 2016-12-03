@@ -47,6 +47,17 @@ namespace MinecraftHelper.Forms
             word.Add("blue");
             word.Add("white");
             word.Add("black");
+            word.Add("aqua");
+            word.Add("gold");
+            word.Add("purple");
+            word.Add("dark_red");
+            word.Add("dark_yellow");
+            word.Add("dark_green");
+            word.Add("dark_blue");
+            word.Add("dark_purple");
+            word.Add("dark_aqua");
+            word.Add("gray");
+
             int index = colorsTellraw.Items.IndexOf(colorsTellraw.Text);
             if (index == -1) index = 0;
 
@@ -146,26 +157,24 @@ namespace MinecraftHelper.Forms
                 case "underlined": returnWord = "Подчеркнутый"; break;
                 case "strikethrough": returnWord = "Зачеркнутый"; break;
                 case "obfuscated": returnWord = "Запутанный"; break;
+                case "aqua": returnWord = "Бирюзовый"; break;
+                case "gold": returnWord = "Золотой"; break;
+                case "purple": returnWord = "Пурпуровый"; break;
+                case "dark_red": returnWord = "Темно-красный"; break;
+                case "dark_yellow": returnWord = "Темно-желтый"; break;
+                case "dark_green": returnWord = "Темно-зеленый"; break;
+                case "dark_blue": returnWord = "Темно-синий"; break;
+                case "gray": returnWord = "Серый"; break;
                 case "":
                 default: returnWord = ""; break;
             }
             return returnWord;
         }
 
-        addScoreboardForm aSF;
-
+     
         private void addScP_Click(object sender, EventArgs e)
         {
-            addScoreboardForm aSF = new addScoreboardForm();
-            aSF.showAddScoreBoardForm(1);
-           /* while (aSF.label1.Text == "abort")
-            {
-                
-            }
-            aSF.label1.Text = "abort";
-            aSF.Close();*/
-            if (aSF.comboBox1.SelectedIndex != 0)
-                MessageBox.Show(aSF.textBox1.Text);
+           
         }
 
         private void btn_showhidelist_Click(object sender, EventArgs e)
