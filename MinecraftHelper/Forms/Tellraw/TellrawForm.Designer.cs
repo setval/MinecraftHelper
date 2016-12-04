@@ -143,6 +143,7 @@
             // addTellraw
             // 
             this.addTellraw.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.addTellraw.Cursor = System.Windows.Forms.Cursors.Hand;
             this.addTellraw.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.addTellraw.Location = new System.Drawing.Point(6, 311);
             this.addTellraw.Name = "addTellraw";

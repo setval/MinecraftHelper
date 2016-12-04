@@ -40,6 +40,19 @@ namespace MinecraftHelper.Forms
             return new TellrawGenerate(objects).returnCode();
         }
 
+        public void ClearGen()
+        {
+            controls.Clear();
+            objects.Clear();
+            tellrawElementsForm.Clear();
+            scoreboards.Clear();
+            is_aSC_PRESS = false;
+            is_aSC_GUIDANCE = false;
+            scoreboard_press = null;
+            scoreboard_guidance = null;
+            UpdateElementsPanel();
+        }
+
         private void addTellraw_Click(object sender, EventArgs e)
         {
             List<string> word_orign = new List<string>();
@@ -134,6 +147,24 @@ namespace MinecraftHelper.Forms
                 string texts = (objects[i].getText() != "") ? objects[i].getText() : "(Пусто)";
                 string color = (objects[i].getColor() != "") ? returnRussianWord(objects[i].getColor()) : "(Пусто)";
                 string formats;
+                string scoreboard;
+                if (scoreboards[i].getScoreboardDo() == ScoreboardTypes.NONE) scoreboard = "События нет";
+                else
+                {
+                    string d_string = "";
+                    switch (scoreboards[i].getScoreboardTypes())
+                    {
+                        case ScoreboardTypes.DO_COMMAND: d_string = "[Выполнить команду]"; break;
+                        case ScoreboardTypes.INVITE_COMMAND: d_string = "[Предложить команду]"; break;
+                        case ScoreboardTypes.OPEN_URL: d_string = "[Открыть URL]"; break;
+                        case ScoreboardTypes.CHANGE_PAGE: d_string = "[Сменить страницу]"; break;
+                        case ScoreboardTypes.SHOW_TEXT: d_string = "[Показать текст]"; break;
+                        case ScoreboardTypes.SHOW_ITEM: d_string = "[Показать предмет]"; break;
+                        case ScoreboardTypes.SHOW_ENTITY: d_string = "[Показать существо]"; break;
+                        case ScoreboardTypes.SHOW_ATTAINMENT: d_string = "[Показать достижение]"; break;
+                    }
+                    scoreboard = "Событие " + d_string + ": " + scoreboards[i].getText();
+                }
                 if (objects[i].getListFormats().Count == 0)
                     formats = "(Пусто)";
                 else
@@ -147,7 +178,7 @@ namespace MinecraftHelper.Forms
               /*  foreach (string obj in objects[i].getListFormats())
                     MessageBox.Show(obj);
                     */
-                ShowTellrawForm.Show(texts, color, formats);
+                ShowTellrawForm.Show(texts, color, formats, scoreboard);
             }
         }
 
@@ -252,7 +283,6 @@ namespace MinecraftHelper.Forms
                 }
             }
         }
-
         private void addScP_Click(object sender, EventArgs e)
         {
             addSc(1);

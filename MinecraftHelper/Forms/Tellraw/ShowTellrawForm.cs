@@ -17,12 +17,13 @@ namespace MinecraftHelper.Forms.Tellraw
         }
 
         static ShowTellrawForm MsgBox; static DialogResult result = DialogResult.No;
-        public static DialogResult Show(string text, string color, string format)
+        public static DialogResult Show(string text, string color, string format, string scoreboard)
         {
             MsgBox = new ShowTellrawForm();
             MsgBox.text.Text = text;
             MsgBox.color.Text = color;
             MsgBox.format.Text = format;
+            MsgBox.l_scoreboard.Text = scoreboard;
             MsgBox.ShowDialog();
             return result;
         }

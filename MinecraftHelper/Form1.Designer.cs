@@ -32,12 +32,13 @@
             this.menu = new System.Windows.Forms.MenuStrip();
             this.minecraftHelperToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tellrawToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.programInfo = new System.Windows.Forms.ToolStripMenuItem();
             this.подключитьсяToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.помощьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.programInfo = new System.Windows.Forms.ToolStripMenuItem();
             this.panel = new System.Windows.Forms.Panel();
             this.blockNews = new System.Windows.Forms.TextBox();
             this.gen = new System.Windows.Forms.Button();
+            this.clearGen = new System.Windows.Forms.Button();
             this.menu.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -69,13 +70,6 @@
             this.tellrawToolStripMenuItem.Text = "Tellraw";
             this.tellrawToolStripMenuItem.Click += new System.EventHandler(this.tellrawToolStripMenuItem_Click);
             // 
-            // programInfo
-            // 
-            this.programInfo.Name = "programInfo";
-            this.programInfo.Size = new System.Drawing.Size(94, 20);
-            this.programInfo.Text = "О программе";
-            this.programInfo.Click += new System.EventHandler(this.programInfo_Click);
-            // 
             // подключитьсяToolStripMenuItem
             // 
             this.подключитьсяToolStripMenuItem.Name = "подключитьсяToolStripMenuItem";
@@ -90,6 +84,13 @@
             this.помощьToolStripMenuItem.Size = new System.Drawing.Size(68, 20);
             this.помощьToolStripMenuItem.Text = "Помощь";
             this.помощьToolStripMenuItem.Click += new System.EventHandler(this.помощьToolStripMenuItem_Click);
+            // 
+            // programInfo
+            // 
+            this.programInfo.Name = "programInfo";
+            this.programInfo.Size = new System.Drawing.Size(94, 20);
+            this.programInfo.Text = "О программе";
+            this.programInfo.Click += new System.EventHandler(this.programInfo_Click);
             // 
             // panel
             // 
@@ -112,29 +113,45 @@
             // 
             // gen
             // 
+            this.gen.Cursor = System.Windows.Forms.Cursors.Hand;
             this.gen.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.gen.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.gen.Location = new System.Drawing.Point(756, 354);
+            this.gen.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.gen.Location = new System.Drawing.Point(757, 355);
             this.gen.Name = "gen";
-            this.gen.Size = new System.Drawing.Size(204, 45);
+            this.gen.Size = new System.Drawing.Size(140, 45);
             this.gen.TabIndex = 5;
             this.gen.Text = "Сгенерировать команду";
             this.gen.UseVisualStyleBackColor = true;
             this.gen.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // clearGen
+            // 
+            this.clearGen.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.clearGen.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.clearGen.Location = new System.Drawing.Point(907, 355);
+            this.clearGen.Name = "clearGen";
+            this.clearGen.Size = new System.Drawing.Size(53, 45);
+            this.clearGen.TabIndex = 6;
+            this.clearGen.Text = "X";
+            this.clearGen.UseVisualStyleBackColor = true;
+            this.clearGen.Click += new System.EventHandler(this.clearGen_Click);
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(967, 412);
+            this.Controls.Add(this.clearGen);
             this.Controls.Add(this.gen);
             this.Controls.Add(this.blockNews);
             this.Controls.Add(this.panel);
             this.Controls.Add(this.menu);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menu;
             this.MaximizeBox = false;
             this.Name = "MainForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Minecraft Helper by Discore (dev-2.261016)";
             this.Load += new System.EventHandler(this.MainForm_Load);
             this.menu.ResumeLayout(false);
@@ -155,6 +172,7 @@
         private System.Windows.Forms.TextBox blockNews;
         private System.Windows.Forms.Button gen;
         private System.Windows.Forms.ToolStripMenuItem помощьToolStripMenuItem;
+        private System.Windows.Forms.Button clearGen;
     }
 }
 

@@ -33,16 +33,18 @@
             this.text = new System.Windows.Forms.TextBox();
             this.color = new System.Windows.Forms.Label();
             this.format = new System.Windows.Forms.Label();
+            this.l_scoreboard = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // button1
             // 
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button1.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.button1.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.button1.Location = new System.Drawing.Point(146, 98);
+            this.button1.Location = new System.Drawing.Point(243, 114);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(140, 36);
+            this.button1.Size = new System.Drawing.Size(69, 23);
             this.button1.TabIndex = 0;
             this.button1.Text = "Закрыть";
             this.button1.UseVisualStyleBackColor = true;
@@ -59,9 +61,9 @@
             // 
             // text
             // 
-            this.text.Location = new System.Drawing.Point(73, 19);
+            this.text.Location = new System.Drawing.Point(59, 16);
             this.text.Name = "text";
-            this.text.Size = new System.Drawing.Size(357, 20);
+            this.text.Size = new System.Drawing.Size(239, 20);
             this.text.TabIndex = 2;
             // 
             // color
@@ -82,12 +84,22 @@
             this.format.TabIndex = 4;
             this.format.Text = "Формат";
             // 
+            // l_scoreboard
+            // 
+            this.l_scoreboard.AutoSize = true;
+            this.l_scoreboard.Location = new System.Drawing.Point(12, 95);
+            this.l_scoreboard.Name = "l_scoreboard";
+            this.l_scoreboard.Size = new System.Drawing.Size(71, 13);
+            this.l_scoreboard.TabIndex = 5;
+            this.l_scoreboard.Text = "События нет";
+            // 
             // ShowTellrawForm
             // 
             this.AcceptButton = this.button1;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(437, 154);
+            this.ClientSize = new System.Drawing.Size(320, 144);
+            this.Controls.Add(this.l_scoreboard);
             this.Controls.Add(this.format);
             this.Controls.Add(this.color);
             this.Controls.Add(this.text);
@@ -111,5 +123,6 @@
         private System.Windows.Forms.TextBox text;
         private System.Windows.Forms.Label color;
         private System.Windows.Forms.Label format;
+        private System.Windows.Forms.Label l_scoreboard;
     }
 }

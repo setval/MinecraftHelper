@@ -119,5 +119,14 @@ namespace MinecraftHelper
         {
             blockNews.ScrollBars = ScrollBars.None;
         }
+
+        private void clearGen_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                tellrawMain.ClearGen();
+            }
+            catch { }
+        }
     }
 }

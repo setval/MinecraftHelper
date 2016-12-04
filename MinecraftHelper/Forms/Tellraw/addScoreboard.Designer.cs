@@ -54,6 +54,7 @@
             // 
             // btn_addSc
             // 
+            this.btn_addSc.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btn_addSc.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btn_addSc.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_addSc.Location = new System.Drawing.Point(5, 49);
@@ -66,6 +67,7 @@
             // 
             // btn_exit
             // 
+            this.btn_exit.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btn_exit.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btn_exit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_exit.Location = new System.Drawing.Point(129, 49);
