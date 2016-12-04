@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 using System.Windows.Forms;
 using MinecraftHelper.Forms.Tellraw;
 
@@ -12,8 +11,13 @@ namespace MinecraftHelper.Forms
         private List<TellrawObject> objects;
         public List<List<Control>> tellrawElementsForm;
 
-        private bool hideShowList = true;
         private const int width = 35;
+        private bool is_aSC_PRESS = false;
+        private bool is_aSC_GUIDANCE = false;
+
+        private List<Scoreboard> scoreboards = null;
+        private Scoreboard scoreboard_press = null;
+        private Scoreboard scoreboard_guidance = null;
 
         public TellrawForm()
         {
@@ -70,8 +74,11 @@ namespace MinecraftHelper.Forms
                     case 2: listFormatis.Add("underlined"); break;
                     case 3: listFormatis.Add("strikethrough"); break;
                     case 4: listFormatis.Add("obfuscated"); break;
-                }  
-            TellrawObject TellrawObject = new TellrawObject(this.textTellraw.Text, word[index], listFormatis);
+                }
+            if (!is_aSC_PRESS && !is_aSC_GUIDANCE) scoreboards = new List<Scoreboard>{new Scoreboard(ScoreboardTypes.NONE), new Scoreboard(ScoreboardTypes.NONE)};
+            if (!is_aSC_PRESS && is_aSC_GUIDANCE) scoreboards = new List<Scoreboard> { new Scoreboard(ScoreboardTypes.NONE), scoreboard_guidance };
+            if (is_aSC_PRESS && !is_aSC_GUIDANCE) { scoreboards = new List<Scoreboard> { scoreboard_press, new Scoreboard(ScoreboardTypes.NONE) }; }
+            TellrawObject TellrawObject = new TellrawObject(this.textTellraw.Text, word[index], listFormatis, scoreboards);
             objects.Add(TellrawObject);
             this.textTellraw.Text = "";
             this.colorsTellraw.Text = "Цвет";
@@ -109,6 +116,14 @@ namespace MinecraftHelper.Forms
                 else
                     listObjects.Items.Add(obj.getText());
             }
+
+            is_aSC_PRESS = false;
+            addScP_PRESS.Text = "Нажатии";
+            addScP_PRESS.ForeColor = System.Drawing.Color.Black;
+
+            is_aSC_GUIDANCE = false;
+            addScP_GUIDANCE.Text = "Наведении";
+            addScP_GUIDANCE.ForeColor = System.Drawing.Color.Black;
         }
 
         private void listObjects_SelectedIndexChanged(object sender, EventArgs e)
@@ -171,26 +186,81 @@ namespace MinecraftHelper.Forms
             return returnWord;
         }
 
-     
-        private void addScP_Click(object sender, EventArgs e)
+        void addSc(int code)
         {
-           
-        }
-
-        private void btn_showhidelist_Click(object sender, EventArgs e)
-        {
-            if (hideShowList)
+            if (code == 1)
             {
-                hideShowList = false;
-                btn_showhidelist.Text = "Показать список";
-                listObjects.Visible = false;
+                if (is_aSC_PRESS)
+                {
+                    addScP_PRESS.Text = "Нажатии";
+                    addScP_PRESS.ForeColor = System.Drawing.Color.Black;
+                    is_aSC_PRESS = false;
+                }
+                else
+                {
+                    
+                    addScoreboard asc = new addScoreboard("нажатии", new List<string>{"Нет", "Выполнить команду", "Предложить команду", "Открыть URL", "Сменить страницу"});
+                    asc.ShowDialog();
+                    if (asc.dr == DialogResult.OK)
+                    {
+                        if (asc.comboBox1.SelectedIndex == 0 || asc.comboBox1.SelectedIndex == -1) return;
+                        addScP_PRESS.Text = "Удалить";
+                        addScP_PRESS.ForeColor = System.Drawing.Color.Red;
+                        is_aSC_PRESS = true;
+                        ScoreboardTypes scT;
+                        switch (asc.comboBox1.SelectedIndex)
+                        {
+                            case 1: scT = ScoreboardTypes.DO_COMMAND; break;
+                            case 2: scT = ScoreboardTypes.INVITE_COMMAND; break;
+                            case 3: scT = ScoreboardTypes.OPEN_URL; break;
+                            case 4: scT = ScoreboardTypes.CHANGE_PAGE; break;
+                            default: scT = ScoreboardTypes.NONE; break;
+                        }
+                        scoreboard_press = new Scoreboard(ScoreboardTypes.PRESS, scT, asc.textBox1.Text);
+                    }
+                }
             }
             else
             {
-                hideShowList = true;
-                btn_showhidelist.Text = "Скрыть список";
-                listObjects.Visible = true;
+                if (is_aSC_GUIDANCE)
+                {
+                    addScP_GUIDANCE.Text = "Наведении";
+                    addScP_GUIDANCE.ForeColor = System.Drawing.Color.Black;
+                    is_aSC_GUIDANCE = false;
+                }
+                else
+                {
+                    addScoreboard asc = new addScoreboard("наведении", new List<string> {"Нет", "Показать текст", "Показать предмет", "Показать сущность (НЕ РАБОТАЕТ)", "Показать достижение"});
+                    asc.ShowDialog();
+                    if (asc.dr == DialogResult.OK)
+                    {
+                        if (asc.comboBox1.SelectedIndex == 0 || asc.comboBox1.SelectedIndex == -1) return;
+                        addScP_GUIDANCE.Text = "Удалить";
+                        addScP_GUIDANCE.ForeColor = System.Drawing.Color.Red;
+                        is_aSC_GUIDANCE = true;
+                        ScoreboardTypes scT;
+                        switch (asc.comboBox1.SelectedIndex)
+                        {
+                            case 1: scT = ScoreboardTypes.SHOW_TEXT; break;
+                            case 2: scT = ScoreboardTypes.SHOW_ITEM; break;
+                            case 3: scT = ScoreboardTypes.SHOW_ENTITY; break;
+                            case 4: scT = ScoreboardTypes.SHOW_ATTAINMENT; break;
+                            default: scT = ScoreboardTypes.NONE; break;
+                        }
+                        scoreboard_guidance = new Scoreboard(ScoreboardTypes.GUIDANCE, scT, asc.textBox1.Text);
+                    }
+                }
             }
         }
+
+        private void addScP_Click(object sender, EventArgs e)
+        {
+            addSc(1);
+        }
+        private void addScP_GUIDANCE_Click(object sender, EventArgs e)
+        {
+            addSc(2);
+        }
+
     }
 }

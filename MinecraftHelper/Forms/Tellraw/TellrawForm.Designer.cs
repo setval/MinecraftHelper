@@ -29,10 +29,9 @@
         private void InitializeComponent()
         {
             this.constructorGroupBox = new System.Windows.Forms.GroupBox();
-            this.btn_showhidelist = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.addScP_GUIDANCE = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
-            this.addScP = new System.Windows.Forms.Button();
+            this.addScP_PRESS = new System.Windows.Forms.Button();
             this.listFormats = new System.Windows.Forms.CheckedListBox();
             this.textTellraw = new System.Windows.Forms.RichTextBox();
             this.colorsTellraw = new System.Windows.Forms.ComboBox();
@@ -45,10 +44,9 @@
             // 
             // constructorGroupBox
             // 
-            this.constructorGroupBox.Controls.Add(this.btn_showhidelist);
-            this.constructorGroupBox.Controls.Add(this.button2);
+            this.constructorGroupBox.Controls.Add(this.addScP_GUIDANCE);
             this.constructorGroupBox.Controls.Add(this.label1);
-            this.constructorGroupBox.Controls.Add(this.addScP);
+            this.constructorGroupBox.Controls.Add(this.addScP_PRESS);
             this.constructorGroupBox.Controls.Add(this.listFormats);
             this.constructorGroupBox.Controls.Add(this.textTellraw);
             this.constructorGroupBox.Controls.Add(this.colorsTellraw);
@@ -60,49 +58,36 @@
             this.constructorGroupBox.TabStop = false;
             this.constructorGroupBox.Text = "Конструктор";
             // 
-            // btn_showhidelist
+            // addScP_GUIDANCE
             // 
-            this.btn_showhidelist.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_showhidelist.Location = new System.Drawing.Point(6, 282);
-            this.btn_showhidelist.Name = "btn_showhidelist";
-            this.btn_showhidelist.Size = new System.Drawing.Size(249, 23);
-            this.btn_showhidelist.TabIndex = 8;
-            this.btn_showhidelist.Text = "Скрыть список ";
-            this.btn_showhidelist.UseVisualStyleBackColor = true;
-            this.btn_showhidelist.Click += new System.EventHandler(this.btn_showhidelist_Click);
-            // 
-            // button2
-            // 
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Location = new System.Drawing.Point(155, 241);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 7;
-            this.button2.Text = "Наведении";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Visible = false;
+            this.addScP_GUIDANCE.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.addScP_GUIDANCE.Location = new System.Drawing.Point(154, 247);
+            this.addScP_GUIDANCE.Name = "addScP_GUIDANCE";
+            this.addScP_GUIDANCE.Size = new System.Drawing.Size(75, 23);
+            this.addScP_GUIDANCE.TabIndex = 7;
+            this.addScP_GUIDANCE.Text = "Наведении";
+            this.addScP_GUIDANCE.UseVisualStyleBackColor = true;
+            this.addScP_GUIDANCE.Click += new System.EventHandler(this.addScP_GUIDANCE_Click);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(89, 218);
+            this.label1.Location = new System.Drawing.Point(88, 224);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(87, 13);
             this.label1.TabIndex = 6;
             this.label1.Text = "Действие при...";
-            this.label1.Visible = false;
             // 
-            // addScP
+            // addScP_PRESS
             // 
-            this.addScP.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.addScP.Location = new System.Drawing.Point(22, 241);
-            this.addScP.Name = "addScP";
-            this.addScP.Size = new System.Drawing.Size(75, 23);
-            this.addScP.TabIndex = 5;
-            this.addScP.Text = "Нажатии";
-            this.addScP.UseVisualStyleBackColor = true;
-            this.addScP.Visible = false;
-            this.addScP.Click += new System.EventHandler(this.addScP_Click);
+            this.addScP_PRESS.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.addScP_PRESS.Location = new System.Drawing.Point(21, 247);
+            this.addScP_PRESS.Name = "addScP_PRESS";
+            this.addScP_PRESS.Size = new System.Drawing.Size(75, 23);
+            this.addScP_PRESS.TabIndex = 5;
+            this.addScP_PRESS.Text = "Нажатии";
+            this.addScP_PRESS.UseVisualStyleBackColor = true;
+            this.addScP_PRESS.Click += new System.EventHandler(this.addScP_Click);
             // 
             // listFormats
             // 
@@ -215,9 +200,8 @@
         private System.Windows.Forms.Panel elementsTellraw;
         private System.Windows.Forms.ListBox listObjects;
         private System.Windows.Forms.CheckedListBox listFormats;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button addScP_GUIDANCE;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button addScP;
-        private System.Windows.Forms.Button btn_showhidelist;
+        private System.Windows.Forms.Button addScP_PRESS;
     }
 }
