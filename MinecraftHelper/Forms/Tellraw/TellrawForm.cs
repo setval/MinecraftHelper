@@ -141,7 +141,7 @@ namespace MinecraftHelper.Forms
 
         private void listObjects_SelectedIndexChanged(object sender, EventArgs e)
         {
-            int i = listObjects.SelectedIndex;            
+            int i = listObjects.SelectedIndex;
             if (i != -1)
             {
                 string texts = (objects[i].getText() != "") ? objects[i].getText() : "(Пусто)";
@@ -151,6 +151,11 @@ namespace MinecraftHelper.Forms
                 if (scoreboards[i].getScoreboardDo() == ScoreboardTypes.NONE) scoreboard = "События нет";
                 else
                 {
+                    if (scoreboards[i].getText() == "")
+                    {
+                        scoreboard = "События нет";
+                        return;
+                    }
                     string d_string = "";
                     switch (scoreboards[i].getScoreboardTypes())
                     {
@@ -261,7 +266,7 @@ namespace MinecraftHelper.Forms
                 }
                 else
                 {
-                    addScoreboard asc = new addScoreboard("наведении", new List<string> {"Нет", "Показать текст", "Показать предмет", "Показать сущность (НЕ РАБОТАЕТ)", "Показать достижение"});
+                    addScoreboard asc = new addScoreboard("наведении", new List<string> {"Нет", "Показать текст", "Показать предмет", "Показать сущность", "Показать достижение"});
                     asc.ShowDialog();
                     if (asc.dr == DialogResult.OK)
                     {

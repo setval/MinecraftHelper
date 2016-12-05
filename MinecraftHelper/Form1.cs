@@ -42,7 +42,7 @@ namespace MinecraftHelper
                 content = sr.ReadToEnd();
                 sr.Close();
                 content = content.Replace("\\n", Environment.NewLine);
-                blockNews.Text = content;
+                blockNews.Text = content.Replace("\n", Environment.NewLine);
                 settings.InternetExists = true;
                 sr.Close();
                 resp.Close();

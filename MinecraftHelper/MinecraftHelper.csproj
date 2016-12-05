@@ -90,7 +90,6 @@
     </Compile>
     <Compile Include="Forms\Tellraw\TellrawGenerate.cs" />
     <Compile Include="Forms\Tellraw\TellrawObject.cs" />
-    <Compile Include="Forms\Tellraw\TellrawScoreboard.cs" />
     <Compile Include="Forms\Tellraw\TellrawScoreboardType.cs" />
     <Compile Include="Generate.cs" />
     <Compile Include="Program.cs" />

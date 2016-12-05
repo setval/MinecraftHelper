@@ -1,4 +1,4 @@
 .vs
-MinecraftHelper/obj
-MinecraftHelper/bin
+MinecraftHelper/obj/
+MinecraftHelper/bin/
 test/
