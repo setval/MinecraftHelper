@@ -1,4 +1,6 @@
-.vs
+.vs/
 MinecraftHelper/obj/
 MinecraftHelper/bin/
+MinecraftHelperUpdate/obj/
+MinecraftHelperUpdate/bin/
 test/
