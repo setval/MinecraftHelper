@@ -91,7 +91,6 @@ namespace MinecraftHelper.Forms
   
             if (!is_aSC_PRESS && !is_aSC_GUIDANCE)
             {
-                scoreboards = new IScoreboard();
                 scoreboards.Scoreboard_Press = new Scoreboard(ScoreboardTypes.NONE);
                 scoreboards.Scoreboard_Guidance = new Scoreboard(ScoreboardTypes.NONE);
             } else if (!is_aSC_PRESS && is_aSC_GUIDANCE) {
