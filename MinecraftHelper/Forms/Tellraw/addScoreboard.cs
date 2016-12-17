@@ -34,8 +34,9 @@ namespace MinecraftHelper.Forms.Tellraw
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (comboBox1.SelectedIndex == 0 || comboBox1.SelectedIndex == -1 || (this.Text == "Добавить событие при наведении" && comboBox1.SelectedIndex == 3)) textBox1.Enabled = false;
-            else textBox1.Enabled = true;
+            if (comboBox1.SelectedIndex == 0 || comboBox1.SelectedIndex == -1 || (this.Text == "Добавить событие при наведении" && comboBox1.SelectedIndex == 3)) textBox1.MaxLength = 0;
+            else { textBox1.MaxLength = 24999; textBox1.Text = ""; }
+            
 
             if (comboBox1.SelectedIndex == 3 && this.Text == "Добавить событие при наведении") { isName = true; update.Start(); label1.Visible = true; }
             else { isName = false; label1.Visible = false; update.Start(); }
@@ -52,6 +53,21 @@ namespace MinecraftHelper.Forms.Tellraw
                 this.Height -= SPEED;
             }
             else update.Stop();
+        }
+
+        private void t_Name_TextChanged(object sender, EventArgs e)
+        {
+            textBox1.Text = "{id:" + t_ID.Text + ",name:" + t_Name.Text + ",type:" + t_Type.Text + "}";
+        }
+
+        private void t_ID_TextChanged(object sender, EventArgs e)
+        {
+            textBox1.Text = "{id:" + t_ID.Text + ",name:" + t_Name.Text + ",type:" + t_Type.Text + "}";
+        }
+
+        private void t_Type_TextChanged(object sender, EventArgs e)
+        {
+            textBox1.Text = "{id:" + t_ID.Text + ",name:" + t_Name.Text + ",type:" + t_Type.Text + "}";
         }
     }
 }

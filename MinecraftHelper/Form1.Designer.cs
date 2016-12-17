@@ -103,11 +103,13 @@
             // blockNews
             // 
             this.blockNews.Location = new System.Drawing.Point(757, 28);
+            this.blockNews.MaxLength = 0;
             this.blockNews.Multiline = true;
             this.blockNews.Name = "blockNews";
             this.blockNews.ReadOnly = true;
             this.blockNews.Size = new System.Drawing.Size(203, 319);
             this.blockNews.TabIndex = 4;
+            this.blockNews.Text = ".";
             this.blockNews.MouseEnter += new System.EventHandler(this.blockNews_MouseEnter);
             this.blockNews.MouseLeave += new System.EventHandler(this.blockNews_MouseLeave);
             // 
@@ -152,7 +154,7 @@
             this.MaximizeBox = false;
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Minecraft Helper by Discore (dev-2.261016)";
+            this.Text = "Minecraft Helper by Discore ";
             this.Load += new System.EventHandler(this.MainForm_Load);
             this.menu.ResumeLayout(false);
             this.menu.PerformLayout();

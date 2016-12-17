@@ -1,14 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-namespace MinecraftHelper
+﻿namespace MinecraftHelper
 {
     class Settings
     {
         public bool InternetExists;
         public string Generate;
-        public string version = "dev-6.4";
+        public string version = "dev-6.5";
     }
 }
