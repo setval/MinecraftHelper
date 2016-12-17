@@ -67,7 +67,7 @@
             this.addScP_GUIDANCE.TabIndex = 7;
             this.addScP_GUIDANCE.Text = "Наведении";
             this.addScP_GUIDANCE.UseVisualStyleBackColor = true;
-            this.addScP_GUIDANCE.Click += new System.EventHandler(this.addScP_GUIDANCE_Click);
+            this.addScP_GUIDANCE.Click += new System.EventHandler(this.AddScP_GUIDANCE_Click);
             // 
             // label1
             // 

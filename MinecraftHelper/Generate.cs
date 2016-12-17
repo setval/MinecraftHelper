@@ -7,6 +7,6 @@ namespace MinecraftHelper
 {
     interface Generate
     {
-        string returnCode();
+        string ReturnCode();
     }
 }

@@ -16,7 +16,7 @@ namespace MinecraftHelper.Forms
 
         private string command;
 
-        private void generate()
+        private void Generate()
         {
             int score = 0;
             foreach (string s in texts)
@@ -91,11 +91,11 @@ namespace MinecraftHelper.Forms
                 scoreboards.Add(tellobj.getScoreboards());
             }
             
-            generate();
-            returnCode();
+            Generate();
+            ReturnCode();
         }
 
-        public string returnCode()
+        public string ReturnCode()
         {
             return command;
         }

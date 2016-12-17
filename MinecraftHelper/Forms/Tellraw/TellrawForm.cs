@@ -15,7 +15,7 @@ namespace MinecraftHelper.Forms
         private bool is_aSC_PRESS = false;
         private bool is_aSC_GUIDANCE = false;
 
-        private List<Scoreboard> scoreboards = null;
+        private List<Scoreboard> scoreboards;
         private Scoreboard scoreboard_press = null;
         private Scoreboard scoreboard_guidance = null;
 
@@ -25,6 +25,7 @@ namespace MinecraftHelper.Forms
             objects = new List<TellrawObject>();
             tellrawElementsForm = new List<List<Control>>();
             this.controls = new List<Control>();
+            scoreboards = new List<Scoreboard>();
             controls.Add(this.constructorGroupBox);
             controls.Add(this.elementsTellraw);
         }
@@ -37,7 +38,7 @@ namespace MinecraftHelper.Forms
 
         public string TellrawGen()
         {
-            return new TellrawGenerate(objects).returnCode();
+            return new TellrawGenerate(objects).ReturnCode();
         }
 
         public void ClearGen()
@@ -147,29 +148,40 @@ namespace MinecraftHelper.Forms
                 string texts = (objects[i].getText() != "") ? objects[i].getText() : "(Пусто)";
                 string color = (objects[i].getColor() != "") ? returnRussianWord(objects[i].getColor()) : "(Пусто)";
                 string formats;
-                string scoreboard;
-                if (scoreboards[i].getScoreboardDo() == ScoreboardTypes.NONE) scoreboard = "События нет";
-                else
+                string scoreboard = "";
+                try
                 {
-                    if (scoreboards[i].getText() == "")
+                    if (scoreboards[i].getScoreboardDo() == ScoreboardTypes.NONE) scoreboard = "События нет";
+                    else
                     {
-                        scoreboard = "События нет";
-                        return;
+                        if (scoreboards[i].getText() == "")
+                        {
+                            scoreboard = "События нет";
+                            return;
+                        }
+                        else
+                        {
+                            try
+                            {
+                                string d_string = "";
+                                switch (scoreboards[i].getScoreboardTypes())
+                                {
+                                    case ScoreboardTypes.DO_COMMAND: d_string = "[Выполнить команду]"; break;
+                                    case ScoreboardTypes.INVITE_COMMAND: d_string = "[Предложить команду]"; break;
+                                    case ScoreboardTypes.OPEN_URL: d_string = "[Открыть URL]"; break;
+                                    case ScoreboardTypes.CHANGE_PAGE: d_string = "[Сменить страницу]"; break;
+                                    case ScoreboardTypes.SHOW_TEXT: d_string = "[Показать текст]"; break;
+                                    case ScoreboardTypes.SHOW_ITEM: d_string = "[Показать предмет]"; break;
+                                    case ScoreboardTypes.SHOW_ENTITY: d_string = "[Показать существо]"; break;
+                                    case ScoreboardTypes.SHOW_ATTAINMENT: d_string = "[Показать достижение]"; break;
+                                }
+                                scoreboard = "Событие " + d_string + ": " + scoreboards[i].getText();
+                            }
+                            catch (Exception ex) { scoreboard = "События нет"; }
+                        }
                     }
-                    string d_string = "";
-                    switch (scoreboards[i].getScoreboardTypes())
-                    {
-                        case ScoreboardTypes.DO_COMMAND: d_string = "[Выполнить команду]"; break;
-                        case ScoreboardTypes.INVITE_COMMAND: d_string = "[Предложить команду]"; break;
-                        case ScoreboardTypes.OPEN_URL: d_string = "[Открыть URL]"; break;
-                        case ScoreboardTypes.CHANGE_PAGE: d_string = "[Сменить страницу]"; break;
-                        case ScoreboardTypes.SHOW_TEXT: d_string = "[Показать текст]"; break;
-                        case ScoreboardTypes.SHOW_ITEM: d_string = "[Показать предмет]"; break;
-                        case ScoreboardTypes.SHOW_ENTITY: d_string = "[Показать существо]"; break;
-                        case ScoreboardTypes.SHOW_ATTAINMENT: d_string = "[Показать достижение]"; break;
-                    }
-                    scoreboard = "Событие " + d_string + ": " + scoreboards[i].getText();
                 }
+                catch (Exception ex) { scoreboard = "Собыя нет"; }
                 if (objects[i].getListFormats().Count == 0)
                     formats = "(Пусто)";
                 else
@@ -292,7 +304,7 @@ namespace MinecraftHelper.Forms
         {
             addSc(1);
         }
-        private void addScP_GUIDANCE_Click(object sender, EventArgs e)
+        private void AddScP_GUIDANCE_Click(object sender, EventArgs e)
         {
             addSc(2);
         }
