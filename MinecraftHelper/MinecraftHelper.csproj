@@ -74,6 +74,7 @@
     <Compile Include="Forms\Tellraw\addScoreboard.Designer.cs">
       <DependentUpon>addScoreboard.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Tellraw\IScoreboard.cs" />
     <Compile Include="Forms\Tellraw\Scoreboard.cs" />
     <Compile Include="Forms\Tellraw\ScoreboardTypes.cs" />
     <Compile Include="Forms\Tellraw\ShowTellrawForm.cs">
