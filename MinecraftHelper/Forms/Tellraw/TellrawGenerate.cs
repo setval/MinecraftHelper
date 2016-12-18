@@ -19,7 +19,7 @@ namespace MinecraftHelper.Forms
             foreach (string s in texts)
             {
                 string d_string = "";
-                if (colors[score] == "" && formats[score].Count == 0 && scoreboards.Count == 0)
+                if (colors[score] == "" && formats[score].Count == 0 && scoreboards[score].Scoreboard_Press.getScoreboardDo() == ScoreboardTypes.NONE && scoreboards[score].Scoreboard_Guidance.getScoreboardDo() == ScoreboardTypes.NONE)
                     code.Add("{\"text\":\"" + s + "\"}");
                 else
                 {
@@ -31,37 +31,34 @@ namespace MinecraftHelper.Forms
                     }
                     if (scoreboards.Count != 0)
                     {
-                        foreach (IScoreboard iScoreboard in scoreboards)
-                        {                            
-                            if (iScoreboard.Scoreboard_Press.getScoreboardDo() != ScoreboardTypes.PRESS) continue;
+                        if (scoreboards[score].Scoreboard_Press.getScoreboardDo() == ScoreboardTypes.PRESS)
+                        {
                             string dd_string = "";
-                            switch (iScoreboard.Scoreboard_Press.getScoreboardTypes())
+                            switch (scoreboards[score].Scoreboard_Press.getScoreboardTypes())
                             {
                                 case ScoreboardTypes.DO_COMMAND: dd_string = "run_command"; break;
                                 case ScoreboardTypes.INVITE_COMMAND: dd_string = "suggest_command"; break;
                                 case ScoreboardTypes.OPEN_URL: dd_string = "open_url"; break;
                                 case ScoreboardTypes.CHANGE_PAGE: dd_string = "change_page"; break;
                             }
-                            d_string += ",\"clickEvent\":{\"action\":\"" + dd_string + "\",\"value\":\"" + iScoreboard.Scoreboard_Press.getText() + "\"}";
+                            d_string += ",\"clickEvent\":{\"action\":\"" + dd_string + "\",\"value\":\"" + scoreboards[score].Scoreboard_Press.getText() + "\"}";
+
                         }
-                        foreach (IScoreboard iScoreboard in scoreboards)
+                        if (scoreboards[score].Scoreboard_Guidance.getScoreboardDo() == ScoreboardTypes.GUIDANCE)
                         {
-                            if (iScoreboard.Scoreboard_Guidance.getScoreboardDo() != ScoreboardTypes.GUIDANCE) continue;
                             string dd_string = "";
-                            switch (iScoreboard.Scoreboard_Guidance.getScoreboardTypes())
+                            switch (scoreboards[score].Scoreboard_Guidance.getScoreboardTypes())
                             {
                                 case ScoreboardTypes.SHOW_TEXT: dd_string = "show_text"; break;
                                 case ScoreboardTypes.SHOW_ITEM: dd_string = "show_item"; break;
                                 case ScoreboardTypes.SHOW_ENTITY: dd_string = "show_entity"; break;
                                 case ScoreboardTypes.SHOW_ATTAINMENT: dd_string = "show_achievement"; break;
                             }
-                            d_string += ",\"hoverEvent\":{\"action\":\"" + dd_string + "\",\"value\":\"" + iScoreboard.Scoreboard_Guidance.getText() + "\"}";
+                            d_string += ",\"hoverEvent\":{\"action\":\"" + dd_string + "\",\"value\":\"" + scoreboards[score].Scoreboard_Guidance.getText() + "\"}";
                         }
                     }
-
-
                     code.Add("{\"text\":\"" + s + "\"" + d_string + "}");
-                }          
+                }
                 score++;
             }
             command = "/tellraw @p [\"\"";

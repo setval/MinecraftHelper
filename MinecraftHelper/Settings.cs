@@ -4,6 +4,6 @@
     {
         public bool InternetExists;
         public string Generate;
-        public string version = "dev-6.5";
+        public string version = "dev-6.6";
     }
 }

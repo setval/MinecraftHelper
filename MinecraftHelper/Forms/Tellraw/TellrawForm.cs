@@ -16,16 +16,22 @@ namespace MinecraftHelper.Forms
         private bool is_aSC_GUIDANCE = false;
 
         private IScoreboard scoreboards;
-        private Scoreboard scoreboard_press = new Scoreboard(ScoreboardTypes.NONE);
-        private Scoreboard scoreboard_guidance = new Scoreboard(ScoreboardTypes.NONE);
+        private Scoreboard scoreboard_press;
+        private Scoreboard scoreboard_guidance;
+     /*   private Scoreboard scoreboard_press = new Scoreboard(ScoreboardTypes.NONE);
+        private Scoreboard scoreboard_guidance = new Scoreboard(ScoreboardTypes.NONE);*/
 
         public TellrawForm()
         {
             InitializeComponent();
             objects = new List<TellrawObject>();
+            scoreboards = new IScoreboard();
+            scoreboard_press = new Scoreboard(ScoreboardTypes.NONE);
+            scoreboard_guidance = new Scoreboard(ScoreboardTypes.NONE);
+            scoreboards.Scoreboard_Press = new Scoreboard(ScoreboardTypes.NONE);
+            scoreboards.Scoreboard_Guidance = new Scoreboard(ScoreboardTypes.NONE);
             tellrawElementsForm = new List<List<Control>>();
             this.controls = new List<Control>();
-            scoreboards = new IScoreboard();
             controls.Add(this.constructorGroupBox);
             controls.Add(this.elementsTellraw);
         }
@@ -50,6 +56,8 @@ namespace MinecraftHelper.Forms
             is_aSC_GUIDANCE = false;
             scoreboard_press = new Scoreboard(ScoreboardTypes.NONE);
             scoreboard_guidance = new Scoreboard(ScoreboardTypes.NONE);
+            scoreboards.Scoreboard_Press = new Scoreboard(ScoreboardTypes.NONE);
+            scoreboards.Scoreboard_Guidance = new Scoreboard(ScoreboardTypes.NONE);
             UpdateElementsPanel();
         }
 
@@ -88,23 +96,19 @@ namespace MinecraftHelper.Forms
                     case 3: listFormatis.Add("strikethrough"); break;
                     case 4: listFormatis.Add("obfuscated"); break;
                 }
-  
-            if (!is_aSC_PRESS && !is_aSC_GUIDANCE)
-            {
-                scoreboards.Scoreboard_Press = new Scoreboard(ScoreboardTypes.NONE);
-                scoreboards.Scoreboard_Guidance = new Scoreboard(ScoreboardTypes.NONE);
-            } else if (!is_aSC_PRESS && is_aSC_GUIDANCE) {
-                scoreboards.Scoreboard_Press = new Scoreboard(ScoreboardTypes.NONE);
-                scoreboards.Scoreboard_Guidance = scoreboard_guidance;
-            } else if (is_aSC_PRESS && !is_aSC_GUIDANCE) {
-                scoreboards.Scoreboard_Press = scoreboard_press;
-                scoreboards.Scoreboard_Guidance = new Scoreboard(ScoreboardTypes.NONE);
-            }
 
-            TellrawObject TellrawObject = new TellrawObject(this.textTellraw.Text, word[index], listFormatis, scoreboards);
-            objects.Add(TellrawObject);
+            IScoreboard iSc = new IScoreboard();
+            iSc.Scoreboard_Press = scoreboard_press;
+            iSc.Scoreboard_Guidance = scoreboard_guidance;
+
+            TellrawObject tellrawObject = new TellrawObject(this.textTellraw.Text, word[index], listFormatis, iSc);
+            objects.Add(tellrawObject);
             this.textTellraw.Text = "";
             this.colorsTellraw.Text = "Цвет";
+
+            scoreboard_press = new Scoreboard(ScoreboardTypes.NONE);
+            scoreboard_guidance = new Scoreboard(ScoreboardTypes.NONE);
+            
 
             UpdateElementsPanel();
         }
@@ -158,10 +162,10 @@ namespace MinecraftHelper.Forms
                 string color = (objects[i].getColor() != "") ? returnRussianWord(objects[i].getColor()) : "(Пусто)";
                 string formats;
                 string scoreboard = "";
-                if (scoreboards.Scoreboard_Press.getScoreboardDo() == ScoreboardTypes.NONE && scoreboards.Scoreboard_Guidance.getScoreboardDo() == ScoreboardTypes.NONE) scoreboard = "События нет";
+                if (objects[i].getScoreboards().Scoreboard_Press.getScoreboardDo() == ScoreboardTypes.NONE && objects[i].getScoreboards().Scoreboard_Guidance.getScoreboardDo() == ScoreboardTypes.NONE) scoreboard = "События нет";
                 else
                 {
-                    if (scoreboards.Scoreboard_Press.getText() == "" && scoreboards.Scoreboard_Guidance.getText() == "")
+                    if (objects[i].getScoreboards().Scoreboard_Press.getText() == "" && objects[i].getScoreboards().Scoreboard_Guidance.getText() == "")
                     {
                         scoreboard = "События нет";
                         return;
@@ -171,22 +175,26 @@ namespace MinecraftHelper.Forms
                         try
                         {
                             string d_string = "";
-                            bool c = false;
-                            switch (scoreboards.Scoreboard_Press.getScoreboardTypes())
+                            int c = 0;
+                            switch (objects[i].getScoreboards().Scoreboard_Press.getScoreboardTypes())
                             {
-                                case ScoreboardTypes.DO_COMMAND: d_string = "[Выполнить команду]"; c = true; break;
-                                case ScoreboardTypes.INVITE_COMMAND: d_string = "[Предложить команду]"; c = true; break;
-                                case ScoreboardTypes.OPEN_URL: d_string = "[Открыть URL]"; c = true; break;
-                                case ScoreboardTypes.CHANGE_PAGE: d_string = "[Сменить страницу]"; c = true; break;
+                                case ScoreboardTypes.DO_COMMAND: d_string = "[Выполнить команду]"; c += 1; break;
+                                case ScoreboardTypes.INVITE_COMMAND: d_string = "[Предложить команду]"; c += 1; break;
+                                case ScoreboardTypes.OPEN_URL: d_string = "[Открыть URL]"; c += 1; break;
+                                case ScoreboardTypes.CHANGE_PAGE: d_string = "[Сменить страницу]"; c += 1; break;
                             }
-                            switch (scoreboards.Scoreboard_Guidance.getScoreboardTypes())
+                            switch (objects[i].getScoreboards().Scoreboard_Guidance.getScoreboardTypes())
                             {
-                                case ScoreboardTypes.SHOW_TEXT: d_string = "[Показать текст]"; break;
-                                case ScoreboardTypes.SHOW_ITEM: d_string = "[Показать предмет]"; break;
-                                case ScoreboardTypes.SHOW_ENTITY: d_string = "[Показать существо]"; break;
-                                case ScoreboardTypes.SHOW_ATTAINMENT: d_string = "[Показать достижение]"; break;
+                                case ScoreboardTypes.SHOW_TEXT: d_string = "[Показать текст]"; c += 2; break;
+                                case ScoreboardTypes.SHOW_ITEM: d_string = "[Показать предмет]"; c += 2; break;
+                                case ScoreboardTypes.SHOW_ENTITY: d_string = "[Показать существо]"; c += 2; break;
+                                case ScoreboardTypes.SHOW_ATTAINMENT: d_string = "[Показать достижение]"; c += 1; break;
                             }
-                            scoreboard = "Событие " + d_string + ": " + ((!c) ? scoreboards.Scoreboard_Guidance.getText() : scoreboards.Scoreboard_Press.getText());
+                            if (c == 3) scoreboard = "Два события";
+                            else
+                            {
+                                scoreboard = "Событие " + d_string + ": " + ((c == 2) ? objects[i].getScoreboards().Scoreboard_Guidance.getText() : objects[i].getScoreboards().Scoreboard_Press.getText());
+                            }
                         }
                         catch (Exception ex) { scoreboard = "События нет"; }
                     }
@@ -275,7 +283,6 @@ namespace MinecraftHelper.Forms
                             default: scT = ScoreboardTypes.NONE; break;
                         }
                         scoreboard_press = new Scoreboard(ScoreboardTypes.PRESS, scT, asc.textBox1.Text);
-                        scoreboard_guidance = new Scoreboard(ScoreboardTypes.NONE);
                     }
                 }
             }
@@ -307,7 +314,6 @@ namespace MinecraftHelper.Forms
                             default: scT = ScoreboardTypes.NONE; break;
                         }
                         scoreboard_guidance = new Scoreboard(ScoreboardTypes.GUIDANCE, scT, asc.textBox1.Text);
-                        scoreboard_press = new Scoreboard(ScoreboardTypes.NONE);
                     }
                 }
             }
