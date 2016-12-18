@@ -129,5 +129,10 @@ namespace MinecraftHelper
             }
             catch { }
         }
+
+        private void закрытьToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            panel.Controls.Clear();
+        }
     }
 }

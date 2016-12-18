@@ -32,13 +32,14 @@
             this.menu = new System.Windows.Forms.MenuStrip();
             this.minecraftHelperToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tellrawToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.подключитьсяToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.помощьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.programInfo = new System.Windows.Forms.ToolStripMenuItem();
             this.panel = new System.Windows.Forms.Panel();
             this.blockNews = new System.Windows.Forms.TextBox();
             this.gen = new System.Windows.Forms.Button();
             this.clearGen = new System.Windows.Forms.Button();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.закрытьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menu.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -46,7 +47,6 @@
             // 
             this.menu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.minecraftHelperToolStripMenuItem,
-            this.подключитьсяToolStripMenuItem,
             this.помощьToolStripMenuItem,
             this.programInfo});
             this.menu.Location = new System.Drawing.Point(0, 0);
@@ -58,7 +58,9 @@
             // minecraftHelperToolStripMenuItem
             // 
             this.minecraftHelperToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tellrawToolStripMenuItem});
+            this.tellrawToolStripMenuItem,
+            this.toolStripSeparator1,
+            this.закрытьToolStripMenuItem});
             this.minecraftHelperToolStripMenuItem.Name = "minecraftHelperToolStripMenuItem";
             this.minecraftHelperToolStripMenuItem.Size = new System.Drawing.Size(108, 20);
             this.minecraftHelperToolStripMenuItem.Text = "Minecraft Helper";
@@ -66,17 +68,9 @@
             // tellrawToolStripMenuItem
             // 
             this.tellrawToolStripMenuItem.Name = "tellrawToolStripMenuItem";
-            this.tellrawToolStripMenuItem.Size = new System.Drawing.Size(111, 22);
+            this.tellrawToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.tellrawToolStripMenuItem.Text = "Tellraw";
             this.tellrawToolStripMenuItem.Click += new System.EventHandler(this.tellrawToolStripMenuItem_Click);
-            // 
-            // подключитьсяToolStripMenuItem
-            // 
-            this.подключитьсяToolStripMenuItem.Name = "подключитьсяToolStripMenuItem";
-            this.подключитьсяToolStripMenuItem.Size = new System.Drawing.Size(101, 20);
-            this.подключитьсяToolStripMenuItem.Text = "Подключиться";
-            this.подключитьсяToolStripMenuItem.Visible = false;
-            this.подключитьсяToolStripMenuItem.Click += new System.EventHandler(this.подключитьсяToolStripMenuItem_Click);
             // 
             // помощьToolStripMenuItem
             // 
@@ -138,6 +132,18 @@
             this.clearGen.UseVisualStyleBackColor = true;
             this.clearGen.Click += new System.EventHandler(this.clearGen_Click);
             // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(149, 6);
+            // 
+            // закрытьToolStripMenuItem
+            // 
+            this.закрытьToolStripMenuItem.Name = "закрытьToolStripMenuItem";
+            this.закрытьToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.закрытьToolStripMenuItem.Text = "Закрыть";
+            this.закрытьToolStripMenuItem.Click += new System.EventHandler(this.закрытьToolStripMenuItem_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -169,12 +175,13 @@
         private System.Windows.Forms.ToolStripMenuItem minecraftHelperToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem programInfo;
         private System.Windows.Forms.ToolStripMenuItem tellrawToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem подключитьсяToolStripMenuItem;
         private System.Windows.Forms.Panel panel;
         private System.Windows.Forms.TextBox blockNews;
         private System.Windows.Forms.Button gen;
         private System.Windows.Forms.ToolStripMenuItem помощьToolStripMenuItem;
         private System.Windows.Forms.Button clearGen;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+        private System.Windows.Forms.ToolStripMenuItem закрытьToolStripMenuItem;
     }
 }
 
