@@ -12,6 +12,7 @@ namespace MinecraftHelper.Forms
         private List<IScoreboard> scoreboards;
 
         private string command;
+        private string player;
 
         private void Generate()
         {
@@ -61,7 +62,7 @@ namespace MinecraftHelper.Forms
                 }
                 score++;
             }
-            command = "/tellraw @p [\"\"";
+            command = "/tellraw " + player + " [\"\"";
             foreach (string s in code)
             {
                 command += "," + s;
@@ -76,6 +77,14 @@ namespace MinecraftHelper.Forms
             colors = new List<string>();
             formats = new List<List<string>>();
             scoreboards = new List<IScoreboard>();
+            try
+            {
+                player = obj[0].getPlayer();
+            }
+            catch
+            {
+                player = "@p";
+            }
             
             foreach (TellrawObject tellobj in obj)
             {
